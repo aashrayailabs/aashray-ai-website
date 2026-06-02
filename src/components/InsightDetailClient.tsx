@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Calendar, Share2, Link2, MessageSquare } from "lucide-react";
@@ -7,7 +8,23 @@ import ReadingProgress from "@/components/ReadingProgress";
 import ReactMarkdown from "react-markdown";
 import { Insight } from "@/lib/insights-data";
 
-export default function InsightDetailClient({ article }: { article: Insight }) {
+export default function InsightDetailClient({ article: initialArticle }: { article: Insight }) {
+  const [article, setArticle] = useState<Insight>(initialArticle);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("aal_insights");
+    if (saved) {
+      try {
+        const insightsList = JSON.parse(saved) as Insight[];
+        const found = insightsList.find((i: Insight) => i.slug === initialArticle.slug);
+        if (found) {
+          setArticle(found);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [initialArticle.slug]);
   return (
     <div className="min-h-screen bg-[#020202] relative selection:bg-white/20 selection:text-white">
       <ReadingProgress />

@@ -1,108 +1,176 @@
-/* eslint-disable @next/next/no-img-element */
+ 
 "use client";
 
 import Link from "next/link";
-import { LinkIcon as LinkedinIcon, Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, Globe, Video } from "lucide-react";
 
 export default function Footer() {
+  const categories = [
+    {
+      title: "Platform",
+      links: [
+        { label: "MitraAI OS", href: "/platforms#mitra-ai-os" },
+        { label: "Workflow Runtime", href: "/infrastructure#workflow-runtime" },
+        { label: "Multi-Agent Systems", href: "/platforms#multi-agent-systems" },
+        { label: "Operational AI Engine", href: "/platforms#operational-ai-engine" }
+      ]
+    },
+    {
+      title: "Infrastructure",
+      links: [
+        { label: "Deployment Topology", href: "/infrastructure" },
+        { label: "Stateful Execution", href: "/infrastructure#workflow-runtime" },
+        { label: "Subnet Setup", href: "/infrastructure#subnet-setup" },
+        { label: "Governance Layer", href: "/governance" }
+      ]
+    },
+    {
+      title: "Solutions",
+      links: [
+        { label: "Advisor Operations", href: "/industries#advisor" },
+        { label: "Financial Services", href: "/industries#financial" },
+        { label: "Customer Workflows", href: "/industries#customer" },
+        { label: "Enterprise Automation", href: "/industries#enterprise" }
+      ]
+    },
+    {
+      title: "Security",
+      links: [
+        { label: "Security Systems", href: "/security" },
+        { label: "Trust Center", href: "/trust-center" },
+        { label: "Identity Control", href: "/security#iam" },
+        { label: "Compliance Logs", href: "/governance#compliance" }
+      ]
+    },
+    {
+      title: "Research",
+      links: [
+        { label: "Systems Blueprints", href: "/research" },
+        { label: "Latency Profiles", href: "/research#operational-ai" },
+        { label: "Governance Models", href: "/research#governance-models" },
+        { label: "Systems Status", href: "/status" }
+      ]
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Founder Philosophy", href: "/about#philosophy" },
+        { label: "Contact", href: "/contact" },
+        { label: "Architecture Review", href: "/contact#review" }
+      ]
+    }
+  ];
 
   return (
-    <footer className="bg-[#020202] pt-20 md:pt-24 pb-12 border-t border-white/[0.03] relative z-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 lg:gap-8 mb-20 md:mb-24">
+    <footer className="bg-[#020202] pt-20 md:pt-24 pb-10 md:pb-12 border-t border-white/[0.06] relative z-20 text-zinc-400 font-sans">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
+        
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 mb-16 md:mb-20">
           
-          {/* Brand & Description */}
-          <div className="col-span-1 lg:col-span-4">
-            <Link href="/" className="flex items-center gap-4 mb-8 group inline-flex">
-              <div className="w-10 h-10 rounded-lg bg-[#050505] border border-white/10 flex items-center justify-center group-hover:border-white/20 transition-all duration-500 overflow-hidden shadow-lg shadow-black/50">
-                <img src="/logo-mark-white.svg" alt="Aashray AI Labs Logo" className="w-6 h-6 opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              <span className="text-[17px] font-bold tracking-tight text-white/95">
-                Aashray AI Labs
+          {/* Brand & HQ */}
+          <div className="lg:col-span-3 flex flex-col gap-4">
+            <Link href="/" className="flex items-center gap-2.5 group select-none" aria-label="Aashray AI Labs Home">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 shrink-0">
+                <defs>
+                  <linearGradient id="aashray-antigravity-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#06b6d4" />
+                    <stop offset="100%" stopColor="#3b82f6" />
+                  </linearGradient>
+                  
+                  <filter id="floating-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#06b6d4" floodOpacity="0.25"/>
+                  </filter>
+                </defs>
+
+                <g filter="url(#floating-shadow)">
+                  <path d="M 50 12 L 88 58 L 66 58 L 66 78 L 34 78 L 34 58 L 12 58 Z" 
+                        fill="url(#aashray-antigravity-gradient)" />
+                        
+                  <path d="M 50 26 L 74 54 L 58 54 L 58 70 L 42 70 L 42 54 L 26 54 Z" 
+                        fill="#0a0e27" />
+                </g>
+              </svg>
+              <span className="text-xl sm:text-2xl font-bold tracking-tighter text-white font-display leading-none group-hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all duration-300">
+                Aashray <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">AI</span>{" "}
+                <span className="text-zinc-300 font-semibold tracking-tight">Labs</span>
               </span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-sm font-medium mb-8">
-              Global boutique AI infrastructure studio. We engineer deterministic AI systems and workflow intelligence for modern enterprises.
+            
+            <p className="text-zinc-400 font-medium tracking-tight text-xs leading-relaxed max-w-xs text-justify">
+              Secure, high-fidelity AI infrastructure for enterprises. Automating workflows and deploying governed middleware across secure subnet ecosystems.
             </p>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-white text-sm font-semibold mb-6 tracking-wide">Core Services</h4>
-            <ul className="space-y-4 text-sm text-gray-500 font-medium tracking-tight">
-              <li><Link href="/ai-agents" className="hover:text-white transition-colors">AI Agents</Link></li>
-              <li><Link href="/workflow-systems" className="hover:text-white transition-colors">Workflow Automation</Link></li>
-              <li><Link href="/ai-products" className="hover:text-white transition-colors">CRM Intelligence</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">WhatsApp AI Systems</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Intelligent Operations</Link></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-white text-sm font-semibold mb-6 tracking-wide">Company</h4>
-            <ul className="space-y-4 text-sm text-gray-500 font-medium tracking-tight">
-              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              <li><Link href="/industries" className="hover:text-white transition-colors">Industries</Link></li>
-              <li><Link href="/resources" className="hover:text-white transition-colors">Resources</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          {/* Global Presence */}
-          <div>
-            <h4 className="text-white text-sm font-semibold mb-6 tracking-wide">Global Presence</h4>
-            <ul className="space-y-4 text-sm text-gray-500 font-medium tracking-tight">
-              <li>India</li>
-              <li>United States</li>
-              <li>Canada</li>
-              <li>Australia</li>
-              <li>UAE</li>
-              <li>Singapore</li>
-              <li>UK</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom / Social / Legal */}
-        <div className="pt-8 border-t border-white/[0.03] flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-gray-600 font-medium tracking-wide">
-            © 2026 Aashray AI Labs. All rights reserved.
-          </p>
-          <div className="flex items-center space-x-6">
-            <a href="https://wa.me/8096712222" className="text-gray-600 hover:text-white transition-colors">
-              <MessageCircle size={18} />
-            </a>
-            <a href="#" className="text-gray-600 hover:text-white transition-colors">
-              <LinkedinIcon size={18} />
-            </a>
-            <a href="mailto:contact@aashrayailabs.com" className="text-gray-600 hover:text-white transition-colors">
-              <Mail size={18} />
-            </a>
-          </div>
-        </div>
-
-        {/* Legal & Compliance Safety System */}
-        <div className="mt-16 pt-8 border-t border-white/[0.03]">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 text-[10px] leading-relaxed text-gray-600 font-medium tracking-wide">
-            <div className="md:col-span-8 space-y-4">
-              <p>
-                Technology concepts and infrastructure representations displayed on this platform are illustrative operational examples intended for enterprise consulting and systems architecture discussions.
-              </p>
-              <p>
-                Aashray AI Labs provides workflow automation, infrastructure consulting, and operational AI system design tailored to organizational requirements.
-              </p>
-              <p>
-                Third-party platforms, integrations, APIs, and infrastructure references remain the property of their respective owners. No affiliation, endorsement, partnership, or certification is implied. Services are subject to applicable laws and regulations within relevant jurisdictions, including India and international operating regions.
-              </p>
-            </div>
-            <div className="md:col-span-4 flex flex-col items-start md:items-end gap-2 text-[9px] uppercase tracking-widest text-gray-700">
-              <span>LEGAL COMPLIANCE: INDIA / GLOBAL</span>
-              <span>INFRASTRUCTURE POLICY: V.24</span>
-              <span>SYSTEM ARCHITECTURE REVIEW: 2026</span>
+            
+            <div className="text-[9.5px] text-zinc-500 font-mono space-y-1 font-semibold">
+              <p>Operations HQ: Hyderabad, Telangana, India</p>
+              <p>Deployment regions: Global Multi-Region VPC</p>
             </div>
           </div>
+          
+          {/* Categories Grid */}
+          <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
+            {categories.map((cat, i) => (
+              <div key={i} className="flex flex-col gap-3.5">
+                <h4 className="text-[9px] font-mono font-bold text-white uppercase tracking-widest leading-none">
+                  {cat.title}
+                </h4>
+                <div className="flex flex-col gap-2">
+                  {cat.links.map((link, j) => (
+                    <Link 
+                      key={j} 
+                      href={link.href} 
+                      className="text-[11px] text-zinc-400 hover:text-white transition-colors duration-300 font-medium tracking-tight"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
+
+        {/* Separator */}
+        <div className="border-t border-white/[0.06] pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs font-mono font-semibold">
+            <a href="mailto:contact@aashrayailabs.com" className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors">
+              <Mail className="w-3.5 h-3.5 text-zinc-500" /> contact@aashrayailabs.com
+            </a>
+            <a href="https://wa.me/8096712222" className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors">
+              <MessageCircle className="w-3.5 h-3.5 text-zinc-500" /> +91 80967 12222
+            </a>
+          </div>
+          
+          <div className="flex items-center space-x-6 text-zinc-600">
+            <a href="https://www.linkedin.com/company/aashray-ai-labs" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider">LinkedIn</span>
+            </a>
+            <a href="https://aashrayailabs.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              <Globe size={16} />
+            </a>
+            <a href="#" className="hover:text-white transition-colors">
+              <Video size={16} />
+            </a>
+          </div>
+        </div>
+
+        {/* Immutable Ledger notice & Legal */}
+        <div className="mt-10 md:mt-12 pt-6 md:pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-zinc-500 font-mono font-semibold uppercase tracking-wider">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <span>© 2026 Aashray AI Labs. All rights reserved.</span>
+            <span className="hidden sm:inline">|</span>
+            <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy Policy</Link>
+            <Link href="/disclaimer" className="hover:text-zinc-400 transition-colors">Disclaimer</Link>
+            <Link href="/security-notice" className="hover:text-zinc-400 transition-colors">Security Notice</Link>
+          </div>
+          <span className="flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            Global Infrastructure Operations
+          </span>
+        </div>
+
       </div>
     </footer>
   );

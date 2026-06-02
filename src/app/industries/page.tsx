@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Briefcase, HeartPulse, Building2, Zap, GraduationCap, Workflow, Landmark, ShoppingCart } from "lucide-react";
+import { ArrowRight, Briefcase, HeartPulse, Building2, Landmark, ShoppingCart, ShieldCheck, Network, Activity } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -13,7 +13,7 @@ function IndustriesContent() {
   const [activeIndustry, setActiveIndustry] = useState("financial");
 
   useEffect(() => {
-    if (target && ["financial", "healthcare", "realestate", "ecommerce", "manufacturing", "education", "agencies"].includes(target)) {
+    if (target && ["financial", "insurance", "healthcare", "realestate", "enterprise", "ecommerce", "services", "operational"].includes(target)) {
       setActiveIndustry(target);
     }
   }, [target]);
@@ -27,10 +27,10 @@ function IndustriesContent() {
       <div className="text-center max-w-4xl mx-auto mb-16">
         <Briefcase className="w-12 h-12 text-white/80 mx-auto mb-8" />
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold mb-8 tracking-tighter leading-[1.1] text-white">
-          Built for <br className="hidden md:block" /> <span className="text-white">Enterprise</span>
+          Industries We <br className="hidden md:block" /> <span className="text-white">Support</span>
         </h1>
         <p className="text-lg sm:text-xl text-gray-400 leading-relaxed font-medium">
-          We deploy robust AI infrastructure for Healthcare, Finance, Real Estate, Manufacturing, and Consulting sectors across the globe.
+          We deploy robust workflow automation and operational intelligence infrastructure for Financial Services, Insurance, Healthcare, Real Estate, Enterprise Operations, Ecommerce, Service Businesses, and Operational Teams globally.
         </p>
       </div>
       
@@ -40,20 +40,21 @@ function IndustriesContent() {
       </div>
 
       <div className="text-center mb-10">
-        <h3 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-2">Select Operating Environment</h3>
+        <h3 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-2">Select Industry Environment</h3>
         <div className="w-16 h-1 bg-cyan-500/30 mx-auto rounded-full" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-24">
         
         {[
-          { id: "financial", title: "Financial & Insurance", icon: Landmark },
-          { id: "healthcare", title: "Healthcare Operations", icon: HeartPulse },
+          { id: "financial", title: "Financial Services", icon: Landmark },
+          { id: "insurance", title: "Insurance Operations", icon: ShieldCheck },
+          { id: "healthcare", title: "Healthcare Systems", icon: HeartPulse },
           { id: "realestate", title: "Real Estate Infra", icon: Building2 },
-          { id: "manufacturing", title: "Manufacturing Ops", icon: Zap },
-          { id: "ecommerce", title: "Ecommerce Routing", icon: ShoppingCart },
-          { id: "education", title: "Educational Systems", icon: GraduationCap },
-          { id: "agencies", title: "Agencies & Service Ops", icon: Workflow },
+          { id: "enterprise", title: "Enterprise Operations", icon: Network },
+          { id: "ecommerce", title: "Ecommerce Automation", icon: ShoppingCart },
+          { id: "services", title: "Service Businesses", icon: Briefcase },
+          { id: "operational", title: "Operational Teams", icon: Activity },
         ].map((ind) => (
           <div 
             key={ind.id}

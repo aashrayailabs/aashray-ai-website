@@ -21,8 +21,32 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
         { cx: "60%", cy: "40%", r: "2" },
       ]
     },
+    financial: {
+      label: "FINANCIAL SERVICES SYSTEMS",
+      paths: [
+        "M 10 90 Q 30 70 50 50 T 90 10",
+        "M 10 10 Q 30 30 50 50 T 90 90"
+      ],
+      nodes: [
+        { cx: "50%", cy: "50%", r: "4" },
+        { cx: "30%", cy: "70%", r: "2" },
+        { cx: "70%", cy: "30%", r: "2" },
+      ]
+    },
+    insurance: {
+      label: "INSURANCE CLAIMS PIPELINE",
+      paths: [
+        "M 10 50 C 30 20, 40 80, 60 50 S 80 20, 90 50",
+        "M 15 30 L 85 70"
+      ],
+      nodes: [
+        { cx: "30%", cy: "38%", r: "3" },
+        { cx: "60%", cy: "50%", r: "2" },
+        { cx: "80%", cy: "38%", r: "2" },
+      ]
+    },
     healthcare: {
-      label: "PATIENT PIPELINE ORCHESTRATION",
+      label: "HEALTHCARE PATIENT ROUTING",
       paths: [
         "M 10 50 L 30 50 L 35 30 L 45 70 L 50 50 L 90 50",
         "M 20 60 Q 50 60 80 60"
@@ -33,7 +57,7 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
       ]
     },
     realestate: {
-      label: "LEAD ROUTING TOPOLOGY",
+      label: "REAL ESTATE LEAD ROUTING",
       paths: [
         "M 10 20 L 50 50 L 90 20",
         "M 10 80 L 50 50 L 90 80",
@@ -45,20 +69,20 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
         { cx: "50%", cy: "80%", r: "2" },
       ]
     },
-    financial: {
-      label: "UNDERWRITING INTELLIGENCE",
+    enterprise: {
+      label: "ENTERPRISE OPERATIONS SYNC",
       paths: [
-        "M 10 90 Q 30 70 50 50 T 90 10",
-        "M 10 10 Q 30 30 50 50 T 90 90"
+        "M 10 20 L 30 20 L 30 80 L 50 80 L 50 20 L 70 20 L 70 80 L 90 80"
       ],
       nodes: [
-        { cx: "50%", cy: "50%", r: "4" },
-        { cx: "30%", cy: "70%", r: "2" },
-        { cx: "70%", cy: "30%", r: "2" },
+        { cx: "30%", cy: "20%", r: "2" },
+        { cx: "30%", cy: "80%", r: "2" },
+        { cx: "50%", cy: "80%", r: "2" },
+        { cx: "50%", cy: "20%", r: "2" },
       ]
     },
     ecommerce: {
-      label: "ORDER FULFILLMENT NETWORK",
+      label: "ECOMMERCE INTENT GATEWAY",
       paths: [
         "M 20 50 L 80 50",
         "M 50 20 L 50 80",
@@ -73,31 +97,8 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
         { cx: "50%", cy: "80%", r: "2" },
       ]
     },
-    education: {
-      label: "ADMISSIONS PIPELINE FLOW",
-      paths: [
-        "M 10 50 Q 30 20 50 50 T 90 50"
-      ],
-      nodes: [
-        { cx: "30%", cy: "35%", r: "2" },
-        { cx: "70%", cy: "65%", r: "2" },
-        { cx: "50%", cy: "50%", r: "3" },
-      ]
-    },
-    manufacturing: {
-      label: "SUPPLY CHAIN APPROVALS",
-      paths: [
-        "M 10 20 L 30 20 L 30 80 L 50 80 L 50 20 L 70 20 L 70 80 L 90 80"
-      ],
-      nodes: [
-        { cx: "30%", cy: "20%", r: "2" },
-        { cx: "30%", cy: "80%", r: "2" },
-        { cx: "50%", cy: "80%", r: "2" },
-        { cx: "50%", cy: "20%", r: "2" },
-      ]
-    },
-    agencies: {
-      label: "CLIENT PORTAL TOPOLOGY",
+    services: {
+      label: "SERVICE WORKSPACE SYSTEM",
       paths: [
         "M 50 50 L 20 20",
         "M 50 50 L 80 20",
@@ -110,6 +111,17 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
         { cx: "80%", cy: "20%", r: "2" },
         { cx: "20%", cy: "80%", r: "2" },
         { cx: "80%", cy: "80%", r: "2" },
+      ]
+    },
+    operational: {
+      label: "OPERATIONAL TEAM TELEMETRY",
+      paths: [
+        "M 10 50 Q 30 20 50 50 T 90 50"
+      ],
+      nodes: [
+        { cx: "30%", cy: "35%", r: "2" },
+        { cx: "70%", cy: "65%", r: "2" },
+        { cx: "50%", cy: "50%", r: "3" },
       ]
     }
   };
@@ -130,21 +142,28 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Floating telemetry particles (Inertia-like movement) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.25]">
-         {[...Array(20)].map((_, i) => (
-           <motion.div
-             key={`particle-${i}`}
-             className="absolute w-1 h-1 bg-cyan-400/50 rounded-full blur-[1px]"
-             initial={{ x: `${Math.random() * 100}%`, y: `${Math.random() * 100}%`, opacity: 0 }}
-             animate={{ 
-               y: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
-               opacity: [0, 0.8, 0],
-               scale: [0.8, 1.2, 0.8]
-             }}
-             transition={{ duration: 8 + Math.random() * 8, repeat: Infinity, ease: "easeInOut" }}
-           />
-         ))}
+      {/* Floating telemetry particles (Inertia-like movement) - Disabled on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.25] hidden md:block">
+         {[...Array(20)].map((_, i) => {
+            const xVal = ((i * 29) % 100);
+            const yVal = ((i * 53) % 100);
+            const animateY1 = ((i * 71) % 100);
+            const animateY2 = ((i * 13) % 100);
+            const durationVal = 8 + ((i * 3) % 8);
+            return (
+              <motion.div
+                key={`particle-${i}`}
+                className="absolute w-1.5 h-1.5 bg-cyan-400/50 rounded-full blur-[1px]"
+                initial={{ x: `${xVal}%`, y: `${yVal}%`, opacity: 0 }}
+                animate={{ 
+                  y: [`${animateY1}%`, `${animateY2}%`],
+                  opacity: [0, 0.8, 0],
+                  scale: [0.8, 1.2, 0.8]
+                }}
+                transition={{ duration: durationVal, repeat: Infinity, ease: "easeInOut" }}
+              />
+            );
+         })}
       </div>
 
       {/* State Morphing Topology */}
@@ -176,7 +195,7 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
                   transform="scale(10, 6)"
                   initial={{ strokeDasharray: "0, 1000", opacity: 0 }}
                   animate={{ strokeDasharray: ["0, 1000", "1000, 0"], opacity: [0, 0.85, 0] }}
-                  transition={{ duration: 4 + Math.random() * 3, repeat: Infinity, ease: [0.25, 0.1, 0.25, 1], delay: Math.random() * 2 }}
+                  transition={{ duration: 4 + ((i * 13) % 3), repeat: Infinity, ease: [0.25, 0.1, 0.25, 1], delay: ((i * 7) % 2) }}
                 />
               </g>
             ))}

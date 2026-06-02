@@ -5,69 +5,421 @@ import {
   ShieldCheck, User, FileText, Repeat, HeartHandshake, Banknote, 
   Activity, Server, Smartphone, LayoutDashboard, Settings, BarChart3, Clock, 
   CheckCircle2, BellRing, Lock, MessageCircle, Building2, Zap, 
-  ShoppingCart, GraduationCap, Briefcase, HeartPulse, Landmark, Users, 
-  Stethoscope, HardHat, Package, Send, Bot
+  ShoppingCart, Briefcase, HeartPulse, Landmark, Users, 
+  Stethoscope, Send, Bot, Network, ChevronRight, Layers
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-type Tab = "Overview" | "Intelligence" | "Communications" | "Analytics" | "Infrastructure";
+type Tab = "Overview" | "Business Case" | "Workflows";
 
 export const INDUSTRY_DATA: Record<string, any> = {
   financial: {
-    id: "financial", title: "Financial & Insurance", icon: Landmark, accent: "cyan",
-    nodes: [{ icon: User, label: "Lead Intake" }, { icon: FileText, label: "Policy Gen" }, { icon: ShieldCheck, label: "Underwriting" }, { icon: Repeat, label: "Renewal Track" }, { icon: HeartHandshake, label: "AI Servicing" }],
-    metrics: [{ label: "Policies Managed", start: 12408, prefix: "", suffix: "", step: 2 }, { label: "AI Actions Today", start: 842, prefix: "", suffix: "", step: 5 }, { label: "Workflow Efficiency", start: 98.4, prefix: "", suffix: "%", step: 0 }],
-    feedEvents: [{ msg: "Document verification completed", icon: CheckCircle2, color: "text-green-400" }, { msg: "Payment confirmation received", icon: Banknote, color: "text-emerald-400" }, { msg: "Renewal reminder delivered via WhatsApp", icon: Smartphone, color: "text-blue-400" }, { msg: "Maturity anomaly detected", icon: BellRing, color: "text-orange-400" }],
-    tableData: { headers: ["Policy ID", "Customer", "Status", "AI Action Required"], rows: [{ id: "POL-9931", col2: "R. Sharma", status: "Maturity Approaching", action: "Schedule Call", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "POL-7124", col2: "A. Patel", status: "Active", action: "None", color: "text-green-400", bg: "bg-green-400/10" }, { id: "POL-8992", col2: "S. Gupta", status: "Pending Verification", action: "Parse Documents", color: "text-cyan-400", bg: "bg-cyan-400/10" }] },
-    modules: [{ title: "Maturity Tracking", desc: "AI systems continuously scan policy lifecycles, alerting advisors 30 days before maturity.", icon: ShieldCheck, color: "text-cyan-400" }, { title: "Loan Eligibility", desc: "Automated assessment of portfolios to intelligently route loan qualification.", icon: Banknote, color: "text-green-400" }]
+    id: "financial",
+    title: "Financial Services",
+    icon: Landmark,
+    accent: "cyan",
+    nodes: [
+      { icon: User, label: "Lead Ingest" },
+      { icon: FileText, label: "KYC Extract" },
+      { icon: ShieldCheck, label: "AML Match" },
+      { icon: Users, label: "Human Over" },
+      { icon: Server, label: "CRM Sync" }
+    ],
+    metrics: [
+      { label: "KYC Records Parsed", start: 14208, prefix: "", suffix: "", step: 3 },
+      { label: "Compliance Checks", start: 380, prefix: "", suffix: "+", step: 1 },
+      { label: "AML Verification", start: 100, prefix: "", suffix: "%", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "KYC documentation validated for user R-990", icon: CheckCircle2, color: "text-green-400" },
+      { msg: "AML screening complete - No matches found", icon: ShieldCheck, color: "text-emerald-400" },
+      { msg: "Risk threshold check bypassed for VIP account", icon: BellRing, color: "text-orange-400" },
+      { msg: "Ledger transaction synched to vault database", icon: Server, color: "text-cyan-400" }
+    ],
+    tableData: {
+      headers: ["Record ID", "Client Name", "AML Status", "Routing State"],
+      rows: [
+        { id: "REC-9931", col2: "Rajiv Sharma", status: "Nominal", action: "Completed", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "REC-7124", col2: "Aditi Patel", status: "Flagged (IP)", action: "Pending Review", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "REC-8992", col2: "Sanjay Gupta", status: "Nominal", action: "Completed", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "KYC & AML processing bottlenecks causing customer onboarding delays.",
+      "High costs and slow response times associated with manual transaction audits.",
+      "Regulatory penalties due to human errors in compliance check tracking.",
+      "Lack of centralized audit trails across multiple legacy database nodes."
+    ],
+    improvements: [
+      "Automate data extraction from ID cards, reducing processing time from hours to seconds.",
+      "Route transactions dynamically to human overrides only when specific risk flags trigger.",
+      "Maintain a secure, immutable log of every compliance check for instant audit reporting.",
+      "Provide real-time telemetry metrics on transaction latency and system throughput."
+    ],
+    workflowSteps: [
+      { label: "Webhook Ingestion", detail: "Inbound customer onboarding data payload is received via HTTPS webhook." },
+      { label: "AI Document Parsing", detail: "Optical AI extracts name, birthdate, and ID number from uploaded documents." },
+      { label: "Compliance Risk Check", detail: "Extracted parameters are cross-referenced with regional AML lists." },
+      { label: "Supervisor Review Gate", detail: "If a low-confidence score is flagged, the pipeline halts and routes to a supervisor console." },
+      { label: "Database Synchronization", detail: "Validated customer record is populated across core ledger tables and CRM databases." }
+    ]
+  },
+  document_operations: {
+    id: "document_operations",
+    title: "Document Operations",
+    icon: ShieldCheck,
+    accent: "emerald",
+    nodes: [
+      { icon: FileText, label: "Doc Ingest" },
+      { icon: Bot, label: "Format Scan" },
+      { icon: Activity, label: "Policy Check" },
+      { icon: Users, label: "Operator Gate" },
+      { icon: Smartphone, label: "Queue Dispatch" }
+    ],
+    metrics: [
+      { label: "Documents Processed", start: 8912, prefix: "", suffix: "", step: 2 },
+      { label: "Validation Rate", start: 94.2, prefix: "", suffix: "%", step: 0 },
+      { label: "Avg Ingestion Time", start: 1.4, prefix: "", suffix: "s", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Schema lookup complete for Document DOC-402", icon: CheckCircle2, color: "text-green-400" },
+      { msg: "Structural layout anomaly detected in page 3", icon: BellRing, color: "text-orange-400" },
+      { msg: "Policy governance checklist validated", icon: ShieldCheck, color: "text-emerald-400" },
+      { msg: "Workflow dispatch notification triggered", icon: Smartphone, color: "text-blue-400" }
+    ],
+    tableData: {
+      headers: ["Document ID", "Registrant", "Verification State", "Routing State"],
+      rows: [
+        { id: "DOC-1042", col2: "Rahul Mehta", status: "Validated", action: "Completed", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "DOC-3312", col2: "Priya Singh", status: "Review Required", action: "Route to Operator", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "DOC-8819", col2: "Vikram Shah", status: "Validated", action: "Completed", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "Document processing backlog due to manual verification of unstructured text layouts.",
+      "High operational costs to verify regulatory details and correct document alignment errors.",
+      "Poor workflow visibility caused by slow feedback loops and manual copy-pasting.",
+      "Lack of centralized audit trails across multiple internal database subnets."
+    ],
+    improvements: [
+      "Extract structured data from clinical/financial PDFs and text layouts instantly.",
+      "Automate document verification checks against specific compliance guidelines.",
+      "Integrate human review gates seamlessly so operators only evaluate custom exceptions.",
+      "Trigger instant notifications and updates across client communication networks."
+    ],
+    workflowSteps: [
+      { label: "Document Ingest Hook", detail: "Customer uploads transaction or registration PDF via gateway." },
+      { label: "Format Scan & Verification", detail: "AI parses layout parameters to verify checklist rules and file structures." },
+      { label: "Policy Compliance check", detail: "Document variables are cross-referenced with internal database systems." },
+      { label: "Operator Review Gate", detail: "Low-confidence extraction values or layout anomalies route to a manual queue." },
+      { label: "Queue Dispatch", detail: "Approved files write state updates directly to database logs." }
+    ]
   },
   healthcare: {
-    id: "healthcare", title: "Healthcare Operations", icon: HeartPulse, accent: "blue",
-    nodes: [{ icon: User, label: "Inquiry" }, { icon: Stethoscope, label: "AI Intake" }, { icon: Server, label: "CRM Sync" }, { icon: Clock, label: "Scheduling" }, { icon: Banknote, label: "Billing" }],
-    metrics: [{ label: "Avg Wait Time", start: 12, prefix: "", suffix: "m", step: 0 }, { label: "Intake Processed", start: 450, prefix: "", suffix: "", step: 3 }, { label: "Bed Utilization", start: 87.2, prefix: "", suffix: "%", step: 0 }],
-    feedEvents: [{ msg: "Patient intake form parsed by AI", icon: FileText, color: "text-blue-400" }, { msg: "Appointment confirmed via SMS", icon: Smartphone, color: "text-green-400" }, { msg: "Doctor schedule anomaly resolved", icon: Activity, color: "text-emerald-400" }, { msg: "Insurance verification completed", icon: ShieldCheck, color: "text-cyan-400" }],
-    tableData: { headers: ["Patient ID", "Name", "Triage Status", "Next Action"], rows: [{ id: "PT-8812", col2: "J. Doe", status: "Awaiting Vitals", action: "Assign Nurse", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "PT-4421", col2: "M. Smith", status: "Cleared", action: "Discharge", color: "text-green-400", bg: "bg-green-400/10" }, { id: "PT-9930", col2: "L. Johnson", status: "Pending Insurance", action: "Verify Data", color: "text-blue-400", bg: "bg-blue-400/10" }] },
-    modules: [{ title: "Smart Scheduling", desc: "AI resolves calendar conflicts and automatically routes patients based on urgency.", icon: Clock, color: "text-blue-400" }, { title: "Automated Follow-ups", desc: "Post-visit WhatsApp automation for feedback and medication reminders.", icon: Smartphone, color: "text-emerald-400" }]
+    id: "healthcare",
+    title: "Healthcare Systems",
+    icon: HeartPulse,
+    accent: "blue",
+    nodes: [
+      { icon: User, label: "Inquiry Ingest" },
+      { icon: Stethoscope, label: "AI Triage" },
+      { icon: Server, label: "EHR Index" },
+      { icon: Clock, label: "Availability" },
+      { icon: Send, label: "Booking" }
+    ],
+    metrics: [
+      { label: "Intake Forms Parsed", start: 24501, prefix: "", suffix: "", step: 5 },
+      { label: "HL7 Message Sync", start: 100, prefix: "", suffix: "%", step: 0 },
+      { label: "Intake Success Rate", start: 100, prefix: "", suffix: "%", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Patient triage payload parsed successfully", icon: FileText, color: "text-blue-400" },
+      { msg: "EHR database synchronization complete", icon: Server, color: "text-green-400" },
+      { msg: "Scheduling conflict resolved by AI", icon: Clock, color: "text-emerald-400" },
+      { msg: "Confirmation dispatched via secure chat", icon: Send, color: "text-cyan-400" }
+    ],
+    tableData: {
+      headers: ["Patient ID", "Inquiry Type", "Triage Score", "Booking Status"],
+      rows: [
+        { id: "PT-8812", col2: "J. Doe (Cardio)", status: "High Priority", action: "Assigned", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "PT-4421", col2: "M. Smith (General)", status: "Routine", action: "Booked", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "PT-9930", col2: "L. Johnson (Ortho)", status: "Routine", action: "Booked", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "Patient scheduling delays leading to open calendar slots and lost practice revenue.",
+      "High administrative overhead compiling unstructured clinical intake forms.",
+      "Data silos between electronic health records (EHR) and external registration apps.",
+      "Strict HIPAA compliance requirements making automated database updates difficult."
+    ],
+    improvements: [
+      "Triaging inbound inquiries based on urgency and physician availability schedules.",
+      "Auto-extracting structured medical data from patient files without human transcription.",
+      "Enforcing secure mTLS transmission protocols for all EHR communication pathways.",
+      "Enabling instant booking confirmations while syncing availability real-time."
+    ],
+    workflowSteps: [
+      { label: "Intake Hook Ingestion", detail: "Unstructured patient inquiry or clinic referral document is ingested." },
+      { label: "Triage Classification", detail: "Clinical criteria parsing classifies patient priority and department requirements." },
+      { label: "EHR Sync & Context Search", detail: "Secure query retrieves historical records from local EHR vaults." },
+      { label: "Availability Routing", detail: "Orchestrator cross-references physician schedules to locate optimal open slots." },
+      { label: "Secure Confirmation", detail: "Confirmed booking syncs with internal logs and alerts patient over secure SMS." }
+    ]
   },
   realestate: {
-    id: "realestate", title: "Real Estate Infrastructure", icon: Building2, accent: "emerald",
-    nodes: [{ icon: User, label: "Lead Gen" }, { icon: Activity, label: "AI Qualify" }, { icon: Users, label: "Broker Assign" }, { icon: Building2, label: "Site Visit" }, { icon: FileText, label: "Offer" }],
-    metrics: [{ label: "Leads Qualified", start: 3205, prefix: "", suffix: "", step: 4 }, { label: "Avg Response", start: 45, prefix: "", suffix: "s", step: 0 }, { label: "Site Visits", start: 128, prefix: "", suffix: "", step: 1 }],
-    feedEvents: [{ msg: "High-value lead identified", icon: BellRing, color: "text-orange-400" }, { msg: "Site visit confirmed via WhatsApp", icon: Smartphone, color: "text-green-400" }, { msg: "Broker matched using CRM logic", icon: Users, color: "text-emerald-400" }, { msg: "Property portfolio sent to client", icon: Send, color: "text-blue-400" }],
-    tableData: { headers: ["Lead ID", "Client", "Lead Score", "AI Action"], rows: [{ id: "LD-552", col2: "A. Singh", status: "Tier 1 - Hot", action: "Broker Call", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "LD-881", col2: "R. Mehta", status: "Nurture", action: "Send Catalog", color: "text-blue-400", bg: "bg-blue-400/10" }, { id: "LD-993", col2: "K. Shah", status: "Site Visit Booked", action: "Send Reminder", color: "text-green-400", bg: "bg-green-400/10" }] },
-    modules: [{ title: "Lead Routing", desc: "Algorithmic distribution of leads to brokers based on performance and territory.", icon: Users, color: "text-emerald-400" }, { title: "Portfolio Matching", desc: "AI cross-references client budgets with active inventory in real-time.", icon: Building2, color: "text-cyan-400" }]
+    id: "realestate",
+    title: "Real Estate Infrastructure",
+    icon: Building2,
+    accent: "emerald",
+    nodes: [
+      { icon: User, label: "Lead Capture" },
+      { icon: Activity, label: "Intent Score" },
+      { icon: Users, label: "Broker Match" },
+      { icon: Clock, label: "Schedule Site" },
+      { icon: FileText, label: "Offer Prep" }
+    ],
+    metrics: [
+      { label: "Inbound Leads Routed", start: 7422, prefix: "", suffix: "", step: 1 },
+      { label: "Route Match Rate", start: 99.8, prefix: "", suffix: "%", step: 0 },
+      { label: "Routing Accuracy", start: 98.4, prefix: "", suffix: "%", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Lead intake webhook received from portal", icon: CheckCircle2, color: "text-green-400" },
+      { msg: "Buyer intent score classified: Hot", icon: Activity, color: "text-cyan-400" },
+      { msg: "Matched broker assigned: West Zone", icon: Users, color: "text-emerald-400" },
+      { msg: "Site visit confirmation dispatched", icon: Smartphone, color: "text-blue-400" }
+    ],
+    tableData: {
+      headers: ["Lead ID", "Property Budget", "Agent Assigned", "Interaction State"],
+      rows: [
+        { id: "LD-552", col2: "INR 4.5 Cr", status: "Agent Active", action: "Site Visit Booked", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "LD-881", col2: "INR 2.1 Cr", status: "Agent Active", action: "Catalog Sent", color: "text-blue-400", bg: "bg-blue-400/10" },
+        { id: "LD-993", col2: "INR 8.5 Cr", status: "Routing Pending", action: "Review Assignment", color: "text-orange-400", bg: "bg-orange-400/10" }
+      ]
+    },
+    challenges: [
+      "Delayed broker response times leading to lost real estate leads and buyer churn.",
+      "Incorrect buyer budget classification leading to misaligned property matching.",
+      "Fragmented scheduling systems making physical site-visit bookings friction-filled.",
+      "Lack of centralized tracking for agreement offers and client interaction history."
+    ],
+    improvements: [
+      "Route buyer details to localized, active brokers within minutes of capture.",
+      "Analyze buyer intent, budget restrictions, and preferences via conversational inputs.",
+      "Synchronize client calendars with broker availability to arrange site visits instantly.",
+      "Track offer drafts and agreement states automatically inside CRM dashboards."
+    ],
+    workflowSteps: [
+      { label: "Lead Hook Ingestion", detail: "Buyer inquiry is captured from property portals or listing websites." },
+      { label: "Buyer Intent Extraction", detail: "AI extracts budget parameters, location preferences, and timeframe metrics." },
+      { label: "Broker Matching Algorithm", detail: "Deterministic routing rules assign the lead to the best matching regional broker." },
+      { label: "Site Visit Coordination", detail: "Integrated calendar API selects appointment times and books slots." },
+      { label: "CRM Sync & Lead Log", detail: "Lead profile, broker mapping, and timeline are populated in Salesforce database." }
+    ]
+  },
+  enterprise: {
+    id: "enterprise",
+    title: "Policy Governance",
+    icon: Network,
+    accent: "cyan",
+    nodes: [
+      { icon: FileText, label: "Intake Ingest" },
+      { icon: Bot, label: "Schema Match" },
+      { icon: ShieldCheck, label: "Compliance" },
+      { icon: Users, label: "Operator Gate" },
+      { icon: Server, label: "Registry Sync" }
+    ],
+    metrics: [
+      { label: "Payloads Orchestrated", start: 34102, prefix: "", suffix: "", step: 8 },
+      { label: "Schema Match Rate", start: 97.8, prefix: "", suffix: "%", step: 0 },
+      { label: "Audit Uptime", start: 100, prefix: "", suffix: "%", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Operational payload ingested from systems queue", icon: FileText, color: "text-blue-400" },
+      { msg: "Metadata verified against index table PO-88", icon: CheckCircle2, color: "text-green-400" },
+      { msg: "Organization policy compliance check completed", icon: ShieldCheck, color: "text-emerald-400" },
+      { msg: "Registry record committed to central database", icon: Server, color: "text-cyan-400" }
+    ],
+    tableData: {
+      headers: ["Process ID", "Origin Entity", "Status", "Routing State"],
+      rows: [
+        { id: "OP-902", col2: "Acme Systems", status: "Validated", action: "Completed", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "OP-115", col2: "Beta Labs", status: "Review Required", action: "Route to Operations Head", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "OP-441", col2: "Global Corp", status: "Validated", action: "Completed", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "Manual verification of data payloads causing synchronization delays.",
+      "High operational costs to manually verify and audit schema formats.",
+      "Slow, manual reviews between internal groups blocking database sync.",
+      "Security compliance risks with unverified files directly updating registry cores."
+    ],
+    improvements: [
+      "Match payload lines against structural guidelines dynamically.",
+      "Enforce compliance and verification boundaries before database updates.",
+      "Introduce state-persistent human-in-the-loop review nodes for discrepancies.",
+      "Maintain encrypted, step-level audit trails of every database write."
+    ],
+    workflowSteps: [
+      { label: "Systems Intake", detail: "Billing system intercepts incoming transaction payload." },
+      { label: "Schema Validation", detail: "AI reads payload layout, extracting quantities and origin metadata." },
+      { label: "PO Index Matching", detail: "Systems query the registry database to match transaction parameters." },
+      { label: "Operational Review Gate", detail: "Flagged policy exceptions trigger a validation hold and alert the supervisor." },
+      { label: "Audit Ledger Sync", detail: "Validated transactions write state updates directly to database logs." }
+    ]
   },
   ecommerce: {
-    id: "ecommerce", title: "Ecommerce Automation", icon: ShoppingCart, accent: "violet",
-    nodes: [{ icon: ShoppingCart, label: "Order Placed" }, { icon: Bot, label: "AI Support" }, { icon: Server, label: "CRM Sync" }, { icon: Package, label: "Fulfillment" }, { icon: CheckCircle2, label: "Resolution" }],
-    metrics: [{ label: "Support Deflection", start: 74.2, prefix: "", suffix: "%", step: 0 }, { label: "Orders Processed", start: 15420, prefix: "", suffix: "", step: 12 }, { label: "Resolution Time", start: 2.4, prefix: "", suffix: "m", step: 0 }],
-    feedEvents: [{ msg: "Refund processed automatically", icon: Banknote, color: "text-emerald-400" }, { msg: "Customer tracking query resolved", icon: Package, color: "text-violet-400" }, { msg: "Order sync failure mitigated", icon: ShieldCheck, color: "text-orange-400" }, { msg: "Abandoned cart recovered via SMS", icon: Smartphone, color: "text-green-400" }],
-    tableData: { headers: ["Ticket ID", "Customer", "Intent", "Resolution Status"], rows: [{ id: "TK-102", col2: "E. Clark", status: "Tracking Update", action: "AI Resolved", color: "text-green-400", bg: "bg-green-400/10" }, { id: "TK-443", col2: "S. Lee", status: "Refund Request", action: "Human Escalation", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "TK-591", col2: "M. Davis", status: "Product Query", action: "AI Resolved", color: "text-green-400", bg: "bg-green-400/10" }] },
-    modules: [{ title: "Intent Recognition", desc: "AI categorizes tickets instantly, deflecting WISMO (Where is my order) queries.", icon: Bot, color: "text-violet-400" }, { title: "WhatsApp Commerce", desc: "End-to-end purchasing and support deployed directly inside WhatsApp.", icon: Smartphone, color: "text-emerald-400" }]
+    id: "ecommerce",
+    title: "Ecommerce Automation",
+    icon: ShoppingCart,
+    accent: "violet",
+    nodes: [
+      { icon: MessageCircle, label: "Chat Ingress" },
+      { icon: Bot, label: "Intent Parse" },
+      { icon: Server, label: "Order Query" },
+      { icon: Users, label: "Support Route" },
+      { icon: CheckCircle2, label: "Resolve Log" }
+    ],
+    metrics: [
+      { label: "Queries Auto-Resolved", start: 62451, prefix: "", suffix: "", step: 12 },
+      { label: "Support Ticket Deflection", start: 68.4, prefix: "", suffix: "%", step: 0 },
+      { label: "Query Response Time", start: 180, prefix: "", suffix: "ms", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Order status query received from customer", icon: MessageCircle, color: "text-blue-400" },
+      { msg: "Intent identified: WISMO (Tracking)", icon: Bot, color: "text-cyan-400" },
+      { msg: "Fulfillment coordinates pulled from db", icon: Server, color: "text-green-400" },
+      { msg: "Auto-reply dispatched with tracking link", icon: CheckCircle2, color: "text-emerald-400" }
+    ],
+    tableData: {
+      headers: ["Ticket ID", "Customer", "Intent Category", "Current State"],
+      rows: [
+        { id: "TK-4431", col2: "Amit Sharma", status: "Auto-Resolved", action: "Resolved", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "TK-9082", col2: "Rohan Das", status: "Refund Escalation", action: "Assigned to Agent", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "TK-7712", col2: "Neha Gupta", status: "Auto-Resolved", action: "Resolved", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "High volume of repetitive support tickets ('Where is my order?') overloading agents.",
+      "Customer frustration caused by delayed response times on messaging channels.",
+      "Disconnected inventory systems leading to incorrect package tracking updates.",
+      "Lack of clean audit trails logging automated responses inside enterprise CRMs."
+    ],
+    improvements: [
+      "Classify customer request intent dynamically and retrieve order logs instantly.",
+      "Deflect routine questions using verified knowledge base index lookups.",
+      "Route payment and refund escalations directly to human customer service managers.",
+      "Sync customer communication history automatically back to core CRM systems."
+    ],
+    workflowSteps: [
+      { label: "Customer Message Intake", detail: "Customer queries order tracking status over WhatsApp, Web, or SMS." },
+      { label: "Intent Parsing", detail: "Intent parser classifies query as 'WISMO' and pulls out the order number." },
+      { label: "Inventory Lookup", detail: "Orchestrator queries inventory databases to retrieve current shipping status." },
+      { label: "Deflection Dispatch", detail: "Automated tracking link, courier info, and arrival timeline are texted to customer." },
+      { label: "CRM Engagement Sync", detail: "The interaction transcript and deflection metrics are pushed to Salesforce Service Cloud." }
+    ]
   },
-  manufacturing: {
-    id: "manufacturing", title: "Manufacturing Intelligence", icon: Zap, accent: "orange",
-    nodes: [{ icon: FileText, label: "Input Request" }, { icon: Server, label: "Workflow Engine" }, { icon: HardHat, label: "Approval" }, { icon: Settings, label: "Production" }, { icon: BarChart3, label: "Reporting" }],
-    metrics: [{ label: "Approval Latency", start: 1.2, prefix: "", suffix: "h", step: 0 }, { label: "Active Workflows", start: 84, prefix: "", suffix: "", step: 1 }, { label: "Uptime", start: 99.9, prefix: "", suffix: "%", step: 0 }],
-    feedEvents: [{ msg: "Supply chain approval routed", icon: CheckCircle2, color: "text-green-400" }, { msg: "Inventory anomaly flagged", icon: BellRing, color: "text-orange-400" }, { msg: "Machine status synced to ERP", icon: Server, color: "text-blue-400" }, { msg: "QA report generated", icon: FileText, color: "text-emerald-400" }],
-    tableData: { headers: ["Batch ID", "Facility", "Status", "Workflow State"], rows: [{ id: "BCH-001", col2: "Plant A", status: "In Production", action: "Monitoring", color: "text-green-400", bg: "bg-green-400/10" }, { id: "BCH-042", col2: "Plant B", status: "Awaiting Parts", action: "Vendor Alert", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "BCH-105", col2: "Plant C", status: "QA Review", action: "Pending Approval", color: "text-blue-400", bg: "bg-blue-400/10" }] },
-    modules: [{ title: "Supply Chain Routing", desc: "Automated coordination between vendors, ERPs, and floor managers.", icon: Server, color: "text-orange-400" }, { title: "Predictive QA", desc: "AI flags historical patterns in production to preempt QA failures.", icon: ShieldCheck, color: "text-cyan-400" }]
+  services: {
+    id: "services",
+    title: "Service Businesses",
+    icon: Briefcase,
+    accent: "violet",
+    nodes: [
+      { icon: FileText, label: "Contract Sign" },
+      { icon: Bot, label: "Workspace Gen" },
+      { icon: Server, label: "Trello Sync" },
+      { icon: Layers, label: "Workspace Audit" },
+      { icon: Send, label: "Welcome Mail" }
+    ],
+    metrics: [
+      { label: "Onboardings Synced", start: 1840, prefix: "", suffix: "", step: 1 },
+      { label: "Intake Queue Uptime", start: 100, prefix: "", suffix: "%", step: 0 },
+      { label: "Manual Steps Saved", start: 5, prefix: "", suffix: " / client", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Signed contract received from portal", icon: FileText, color: "text-green-400" },
+      { msg: "Client shared drive directories created", icon: Bot, color: "text-blue-400" },
+      { msg: "Project checklist templates populated", icon: Server, color: "text-cyan-400" },
+      { msg: "Onboarding checklist dispatched to client", icon: Layers, color: "text-emerald-400" }
+    ],
+    tableData: {
+      headers: ["Client ID", "Onboarding Status", "Onboarding Tasks", "Actions Taken"],
+      rows: [
+        { id: "CL-902", col2: "Active", status: "Task Setup Complete", action: "Welcome Sent", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "CL-115", col2: "Pending Docs", status: "Awaiting Finance ID", action: "Send Reminder", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "CL-441", col2: "Active", status: "Task Setup Complete", action: "Welcome Sent", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "Manual client onboarding processes delaying project kickoff timelines.",
+      "High human effort required to duplicate task checklists across task boards.",
+      "Delayed invoicing and billing setups hurting agency cash flow.",
+      "Scattered onboarding documents causing compliance tracking gaps."
+    ],
+    improvements: [
+      "Trigger onboarding workflows immediately when contracts are signed.",
+      "Automate shared folder, workspace, and project board template creations.",
+      "Sync billing parameters directly to QuickBooks/Stripe upon registration.",
+      "Ensure clean client data organization with central execution dashboards."
+    ],
+    workflowSteps: [
+      { label: "Contract Signed Event", detail: "Webhook catches contract signature event from DocuSign or PandaDoc." },
+      { label: "Workspace Creation", detail: "System generates shared Google Drive folders and Slack workspace channels." },
+      { label: "Task Checklist Populate", detail: "Standard project boards (Trello/Asana) are populated with onboarding checklists." },
+      { label: "Operational Review", detail: "Systems compile client profiles and populate workspace registers." },
+      { label: "Welcome Notification", detail: "Personalized onboarding checklist links and folders are emailed to primary client contact." }
+    ]
   },
-  education: {
-    id: "education", title: "Educational Systems", icon: GraduationCap, accent: "cyan",
-    nodes: [{ icon: User, label: "Inquiry" }, { icon: Bot, label: "AI Assistant" }, { icon: FileText, label: "Admission" }, { icon: Users, label: "Enrollment" }, { icon: MessageCircle, label: "Comms" }],
-    metrics: [{ label: "Admission Speed", start: 24, prefix: "", suffix: "h", step: 0 }, { label: "Queries Answered", start: 8402, prefix: "", suffix: "", step: 8 }, { label: "Conversion Rate", start: 18.4, prefix: "", suffix: "%", step: 0 }],
-    feedEvents: [{ msg: "Student documents verified via AI", icon: ShieldCheck, color: "text-green-400" }, { msg: "Fee reminder sent via WhatsApp", icon: Smartphone, color: "text-blue-400" }, { msg: "Course inquiry routed to counselor", icon: Users, color: "text-emerald-400" }, { msg: "Application anomaly flagged", icon: BellRing, color: "text-orange-400" }],
-    tableData: { headers: ["Applicant ID", "Program", "Status", "AI Action"], rows: [{ id: "APP-402", col2: "CS-101", status: "Pending Docs", action: "Send Reminder", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "APP-881", col2: "MBA", status: "Interview Set", action: "Sync Calendar", color: "text-blue-400", bg: "bg-blue-400/10" }, { id: "APP-992", col2: "Design", status: "Admitted", action: "Trigger Onboarding", color: "text-green-400", bg: "bg-green-400/10" }] },
-    modules: [{ title: "Automated Admissions", desc: "End-to-end processing of applications, document parsing, and fee routing.", icon: FileText, color: "text-cyan-400" }, { title: "Student Support AI", desc: "24/7 conversational bots answering syllabus and facility questions.", icon: Bot, color: "text-emerald-400" }]
-  },
-  agencies: {
-    id: "agencies", title: "Agencies & Service Ops", icon: Briefcase, accent: "violet",
-    nodes: [{ icon: FileText, label: "Request" }, { icon: Server, label: "AI Routing" }, { icon: Settings, label: "Task Sync" }, { icon: Activity, label: "Delivery" }, { icon: BarChart3, label: "Reporting" }],
-    metrics: [{ label: "Tasks Automated", start: 450, prefix: "", suffix: "", step: 4 }, { label: "Client Visibility", start: 100, prefix: "", suffix: "%", step: 0 }, { label: "Onboarding Time", start: 1.5, prefix: "", suffix: "h", step: 0 }],
-    feedEvents: [{ msg: "Client onboarding workflow complete", icon: CheckCircle2, color: "text-green-400" }, { msg: "Monthly report generated by AI", icon: FileText, color: "text-blue-400" }, { msg: "Task synced with Slack", icon: Server, color: "text-violet-400" }, { msg: "Invoice sent to billing contact", icon: Banknote, color: "text-emerald-400" }],
-    tableData: { headers: ["Client ID", "Project", "Status", "Next Action"], rows: [{ id: "CLI-01", col2: "Brand Redesign", status: "In Progress", action: "None", color: "text-green-400", bg: "bg-green-400/10" }, { id: "CLI-05", col2: "SEO Retainer", status: "Awaiting Copy", action: "Automated Ping", color: "text-orange-400", bg: "bg-orange-400/10" }, { id: "CLI-12", col2: "Web Build", status: "QA Ready", action: "Route to Tester", color: "text-blue-400", bg: "bg-blue-400/10" }] },
-    modules: [{ title: "Client Portals", desc: "Dynamic dashboards pulling live project status from disparate task managers.", icon: LayoutDashboard, color: "text-violet-400" }, { title: "Automated Reporting", desc: "Data aggregation pipelines that compile and send reports without human input.", icon: BarChart3, color: "text-cyan-400" }]
+  operational: {
+    id: "operational",
+    title: "Operational Teams",
+    icon: Activity,
+    accent: "orange",
+    nodes: [
+      { icon: BellRing, label: "Alert Ingress" },
+      { icon: Bot, label: "Triage Score" },
+      { icon: FileText, label: "Runbook Pull" },
+      { icon: Users, label: "On-Call Pager" },
+      { icon: CheckCircle2, label: "Audit Log Sync" }
+    ],
+    metrics: [
+      { label: "Alerts Ingested/min", start: 2450, prefix: "", suffix: "", step: 4 },
+      { label: "MTTR Reduction", start: 35.6, prefix: "", suffix: "%", step: 0 },
+      { label: "Mitigation Success", start: 99.8, prefix: "", suffix: "%", step: 0 }
+    ],
+    feedEvents: [
+      { msg: "Server warning alert intercepted from PagerDuty", icon: BellRing, color: "text-orange-400" },
+      { msg: "Severity classified: Medium priority", icon: Bot, color: "text-cyan-400" },
+      { msg: "Mitigation runbook commands fetched", icon: FileText, color: "text-blue-400" },
+      { msg: "Incident details synced to Slack channel #ops", icon: CheckCircle2, color: "text-green-400" }
+    ],
+    tableData: {
+      headers: ["Alert ID", "Component", "Severity Level", "Mitigation Status"],
+      rows: [
+        { id: "ALT-902", col2: "Database Node B", status: "Mitigated", action: "Runbook Executed", color: "text-green-400", bg: "bg-green-400/10" },
+        { id: "ALT-115", col2: "Fulfillment Gateway", status: "Active Anomaly", action: "Paged On-Call Engineer", color: "text-orange-400", bg: "bg-orange-400/10" },
+        { id: "ALT-441", col2: "Load Balancer C", status: "Mitigated", action: "Runbook Executed", color: "text-green-400", bg: "bg-green-400/10" }
+      ]
+    },
+    challenges: [
+      "Alert fatigue causing team members to miss critical infrastructure outages.",
+      "High Mean Time to Resolution (MTTR) due to manual diagnostics and runbook searches.",
+      "Human errors during manual triaging and incident escalation workflows.",
+      "Lack of centralized logs tracing mitigation steps taken by engineers."
+    ],
+    improvements: [
+      "Categorize alerts based on historical telemetry baselines dynamically.",
+      "Automate initial diagnostics, pulling corresponding runbooks for on-call engineers.",
+      "Route severe outages directly to active schedules, minimizing delay.",
+      "Log every alert, diagnostic outcome, and mitigation action for post-mortem audits."
+    ],
+    workflowSteps: [
+      { label: "Alert Hook Ingestion", detail: "System warnings are received from Datadog, Prometheus, or cloud monitoring nodes." },
+      { label: "Telemetry Anomaly Triage", detail: "Alert magnitude is compared against statistical baselines to filter out noise." },
+      { label: "Runbook Retrieval", detail: "AI pulls pre-validated troubleshooting guides matching the specific incident type." },
+      { label: "Engineer Escalation", detail: "Critical issues route alert details and runbooks to active engineer pager systems." },
+      { label: "Post-Mortem Logging", detail: "Diagnostics, on-call responses, and resolutions are compiled in secure database logs." }
+    ]
   }
 };
 
@@ -117,7 +469,7 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       key={activeIndustryId} // Force remount animation on industry change
-      className="w-full bg-[#030303] rounded-xl border border-white/10 overflow-hidden shadow-[0_0_80px_rgba(6,182,212,0.05)] flex flex-col md:flex-row h-[800px] font-sans"
+      className="w-full bg-[#030303] rounded-xl border border-white/10 overflow-hidden shadow-[0_0_80px_rgba(6,182,212,0.05)] flex flex-col md:flex-row h-[750px] font-sans"
     >
       
       {/* ---------------- LEFT SIDEBAR (Navigation) ---------------- */}
@@ -131,10 +483,10 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
         </div>
         
         <div className="p-3 space-y-1">
-          {["Overview", "Intelligence", "Communications", "Analytics", "Infrastructure"].map((tab) => (
+          {(["Overview", "Business Case", "Workflows"] as Tab[]).map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab as Tab)}
+              onClick={() => setActiveTab(tab)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition-all ${
                 activeTab === tab 
                   ? "bg-white/10 text-white border border-white/20" 
@@ -142,10 +494,8 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
               }`}
             >
               {tab === "Overview" && <LayoutDashboard className="w-4 h-4" />}
-              {tab === "Intelligence" && <Server className="w-4 h-4" />}
-              {tab === "Communications" && <Smartphone className="w-4 h-4" />}
-              {tab === "Analytics" && <BarChart3 className="w-4 h-4" />}
-              {tab === "Infrastructure" && <Settings className="w-4 h-4" />}
+              {tab === "Business Case" && <Briefcase className="w-4 h-4" />}
+              {tab === "Workflows" && <Settings className="w-4 h-4" />}
               {tab}
             </button>
           ))}
@@ -155,10 +505,10 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
         <div className="p-5 flex-1 flex flex-col justify-end gap-4 opacity-80">
           <div className="space-y-3">
             {[
-              { label: "AI PIPELINE HEALTH", value: "99.98%", color: "text-emerald-400", bg: "bg-emerald-500" },
-              { label: "GLOBAL LATENCY", value: "42ms", color: "text-cyan-400", bg: "bg-cyan-500" },
-              { label: "EDGE ROUTING", value: "STABLE", color: "text-emerald-400", bg: "bg-emerald-500" },
-              { label: "NODE SYNC", value: "ACTIVE", color: "text-cyan-400", bg: "bg-cyan-500" }
+              { label: "AI PIPELINE STATUS", value: "NOMINAL", color: "text-emerald-400", bg: "bg-emerald-500" },
+              { label: "EXECUTION INTEGRITY", value: "VERIFIED", color: "text-cyan-400", bg: "bg-cyan-500" },
+              { label: "EDGE PIPELINES", value: "ACTIVE", color: "text-emerald-400", bg: "bg-emerald-500" },
+              { label: "AUDIT NODE LOGS", value: "ACTIVE", color: "text-cyan-400", bg: "bg-cyan-500" }
             ].map((stat, i) => (
               <div key={i} className="flex justify-between items-end border-b border-white/[0.03] pb-2">
                 <div className="flex items-center gap-2">
@@ -171,14 +521,18 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
           </div>
 
           <div className="mt-2 h-10 relative flex items-end justify-between opacity-20">
-             {[...Array(20)].map((_, i) => (
-               <motion.div
-                 key={i}
-                 className="w-1 bg-cyan-400 rounded-t-sm"
-                 animate={{ height: ["20%", `${Math.random() * 80 + 20}%`, "20%"] }}
-                 transition={{ duration: 1.5 + Math.random(), repeat: Infinity, ease: "easeInOut" }}
-               />
-             ))}
+             {[...Array(20)].map((_, i) => {
+               const heightPercent = 20 + ((i * 13) % 80);
+               const durationVal = 1.5 + ((i * 7) % 10) / 10;
+               return (
+                 <motion.div
+                   key={i}
+                   className="w-1 bg-cyan-400 rounded-t-sm"
+                   animate={{ height: ["20%", `${heightPercent}%`, "20%"] }}
+                   transition={{ duration: durationVal, repeat: Infinity, ease: "easeInOut" }}
+                 />
+               );
+             })}
           </div>
         </div>
 
@@ -250,7 +604,7 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
                             whileHover={{ scale: 1.1, borderColor: "#06b6d4" }}
                           >
                             <node.icon className="w-5 h-5 text-gray-400" />
-                            {i === 2 && (
+                            {i === 3 && (
                                <motion.span 
                                  className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-500 rounded-full border border-black"
                                  animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
@@ -265,30 +619,7 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
                   </div>
                 </div>
 
-                {/* Sub Modules Preview */}
-                <div className="grid grid-cols-2 gap-6">
-                  {data.modules.map((mod: any, i: number) => (
-                    <div key={i} className="bg-[#080808] border border-white/5 p-5 rounded-xl">
-                      <h4 className="text-sm font-bold text-white mb-2 flex items-center gap-2">
-                        <mod.icon className={`w-4 h-4 ${mod.color}`} /> {mod.title}
-                      </h4>
-                      <p className="text-xs text-gray-500 leading-relaxed">{mod.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-
-            {activeTab === "Intelligence" && (
-              <motion.div
-                key="intelligence"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="space-y-6"
-              >
-                <h2 className="text-xl font-bold text-white mb-6">Active Intelligence Tracking</h2>
-                <div className="bg-[#050505] border border-white/5 rounded-xl overflow-hidden">
+                <div className="bg-[#050505] border border-white/5 rounded-xl overflow-hidden mt-6">
                   <table className="w-full text-left text-sm">
                     <thead className="bg-[#111] border-b border-white/5 text-[10px] uppercase tracking-widest text-gray-500">
                       <tr>
@@ -316,17 +647,79 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
               </motion.div>
             )}
 
-            {activeTab !== "Overview" && activeTab !== "Intelligence" && (
+            {activeTab === "Business Case" && (
               <motion.div
-                key="other"
+                key="business"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="flex flex-col items-center justify-center h-64 text-center"
+                className="space-y-6"
               >
-                <div className="w-12 h-12 rounded-full border-2 border-cyan-500/30 border-t-cyan-500 animate-spin mb-4" />
-                <p className="text-cyan-400 font-mono text-sm">Loading {activeTab} Module...</p>
-                <p className="text-gray-500 text-xs mt-2">Connecting to secure infrastructure node.</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <Briefcase className="w-5 h-5 text-cyan-400" />
+                  <h2 className="text-xl font-bold text-white">Business Value Strategy</h2>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-[#080808] border border-white/5 p-6 rounded-xl">
+                    <h3 className="text-sm font-mono text-orange-400 uppercase tracking-widest mb-4">Business Challenges</h3>
+                    <ul className="space-y-3">
+                      {data.challenges.map((challenge: string, i: number) => (
+                        <li key={i} className="text-xs text-gray-400 leading-relaxed flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-1.5 shrink-0" />
+                          <span>{challenge}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-[#080808] border border-white/5 p-6 rounded-xl">
+                    <h3 className="text-sm font-mono text-emerald-400 uppercase tracking-widest mb-4">AI Operational Improvements</h3>
+                    <ul className="space-y-3">
+                      {data.improvements.map((improvement: string, i: number) => (
+                        <li key={i} className="text-xs text-gray-400 leading-relaxed flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                          <span>{improvement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === "Workflows" && (
+              <motion.div
+                key="workflows"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="space-y-6"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Settings className="w-5 h-5 text-cyan-400" />
+                  <h2 className="text-xl font-bold text-white">Workflow Automation Timeline</h2>
+                </div>
+
+                <div className="bg-[#080808] border border-white/5 p-6 rounded-xl space-y-6">
+                  {data.workflowSteps.map((step: any, i: number) => (
+                    <div key={i} className="flex gap-4 items-start relative">
+                      <span className="w-6 h-6 rounded-full bg-[#050505] border border-cyan-500/30 flex items-center justify-center text-[10px] font-mono text-cyan-400 shrink-0">
+                        {`0${i + 1}`}
+                      </span>
+                      <div className="flex-1">
+                        <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                          {step.label}
+                          {i < data.workflowSteps.length - 1 && <ChevronRight className="w-3.5 h-3.5 text-gray-600 hidden sm:inline" />}
+                        </h4>
+                        <p className="text-[11px] text-gray-500 font-medium mt-0.5 leading-relaxed">{step.detail}</p>
+                      </div>
+                      {i < data.workflowSteps.length - 1 && (
+                        <div className="absolute left-3 top-6 bottom-[-24px] w-[1px] bg-white/10" />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             )}
 
@@ -353,7 +746,7 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
                 <motion.div
                   key={event.id}
                   initial={{ opacity: 0, x: 20, backgroundColor: "rgba(6, 182, 212, 0.2)" }}
-                  animate={{ opacity: 1, x: 0, backgroundColor: "transparent" }}
+                  animate={{ opacity: 1, x: 0, backgroundColor: "rgba(0,0,0,0)" }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.5 }}
                   className="p-3 rounded-lg border border-white/[0.03] bg-[#0a0a0a] flex gap-3"

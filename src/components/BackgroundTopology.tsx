@@ -19,8 +19,8 @@ export default function BackgroundTopology() {
       <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-blue-900/10 blur-[150px] rounded-full" />
       <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] bg-teal-900/5 blur-[120px] rounded-full" />
 
-      {/* Animated Topology Lines */}
-      <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+      {/* Animated Topology Lines - Disabled on mobile to reduce visual noise & save GPU resources */}
+      <svg className="absolute inset-0 w-full h-full opacity-20 hidden md:block" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="cyanPulse" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="transparent" />

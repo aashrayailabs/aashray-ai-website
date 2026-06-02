@@ -9,9 +9,9 @@ export default function AmbientBackground() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-900/5 via-[#000000] to-[#000000] opacity-40"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-900/5 via-[#000000] to-[#000000] opacity-40"></div>
 
-      {/* Ultra-Soft Animated Grid Overlay */}
+      {/* Ultra-Soft Animated Grid Overlay - Disabled on mobile to reduce rendering overhead */}
       <motion.div 
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.015] hidden md:block"
         style={{
           backgroundImage: `linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px)`,
           backgroundSize: '48px 48px'
@@ -26,8 +26,8 @@ export default function AmbientBackground() {
         }}
       />
 
-      {/* Subtle Data Flows (Vertical lines) */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
+      {/* Subtle Data Flows (Vertical lines) - Disabled on mobile */}
+      <div className="absolute inset-0 overflow-hidden opacity-20 hidden md:block">
         {[20, 40, 60, 80].map((left, i) => (
           <motion.div
             key={i}

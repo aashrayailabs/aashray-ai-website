@@ -15,7 +15,7 @@ export const insightsData: Insight[] = [
   {
     id: "1",
     slug: "conceptual-architecture-edge-routing",
-    title: "Conceptual Architecture: Edge-First AI Routing for Latency Reduction",
+    title: "Building Secure Enterprise AI Systems",
     category: "AI Infrastructure",
     date: "May 12, 2026",
     readTime: "8 min read",
@@ -47,7 +47,7 @@ This approach highlights a core AAL philosophy: AI scale is fundamentally a syst
   {
     id: "2",
     slug: "workflow-intelligence-beyond-zapier",
-    title: "Workflow Intelligence: Why State Machines Outperform Linear Scripts",
+    title: "How AI Workflow Automation Reduces Manual Operations",
     category: "Workflow Intelligence",
     date: "April 28, 2026",
     readTime: "6 min read",
@@ -79,7 +79,7 @@ By treating LLMs as specialized nodes within a robust state machine, we gain rel
   {
     id: "3",
     slug: "illustrative-scenario-optical-workflow",
-    title: "Illustrative Scenario: Resolving Document Bottlenecks with Optical AI",
+    title: "Operational Intelligence for Insurance Workflows",
     category: "Case Studies",
     date: "May 18, 2026",
     readTime: "5 min read",
@@ -170,6 +170,123 @@ To solve this systematically, we architect asynchronous AI qualification pipelin
 By removing the manual research burden, this system architecture allows human teams to operate at higher velocity. High-scoring leads receive faster human outreach, while low-scoring leads are systematically routed to automated nurturing sequences.
 
 Operational AI should not replace human decision-making; it should provide humans with perfectly structured context at the exact moment they need it.
+    `,
+  },
+  {
+    id: "6",
+    slug: "multi-agent-coordination-handoff-protocols",
+    title: "AI Governance in Enterprise Automation",
+    category: "AI Infrastructure",
+    date: "May 20, 2026",
+    readTime: "9 min read",
+    summary: "How to route between specialized AI agents without losing conversational context, and why deterministic handoff schemas are critical for enterprise reliability.",
+    author: "AAL Engineering",
+    authorRole: "Infrastructure Team",
+    content: `
+## The Multi-Agent Problem
+
+As AI systems grow beyond single-purpose chatbots, organizations deploy specialized agents — one for customer support, another for billing inquiries, a third for technical escalation. The critical engineering challenge is not building individual agents, but designing the coordination protocol between them.
+
+### Why Linear Routing Fails
+
+A naive implementation routes requests through a chain of agents sequentially. This introduces compounding latency, context loss at each handoff boundary, and unpredictable failure modes when an intermediate agent encounters an edge case.
+
+### Deterministic Handoff Architecture
+
+At Aashray AI Labs, we design agent coordination using deterministic handoff schemas. Each agent transition is governed by an explicit contract:
+
+#### The Handoff Schema:
+
+1.  **Context Serialization:** Before any handoff, the originating agent serializes the complete conversation state into a structured JSON payload — including user intent classification, extracted entities, confidence scores, and conversation history hash.
+2.  **Routing Decision Matrix:** A central orchestrator evaluates the serialized context against a routing matrix. This matrix maps intent-confidence pairs to specific downstream agents with fallback paths defined for low-confidence scenarios.
+3.  **Receiving Agent Validation:** The downstream agent validates the incoming context payload against its expected schema. If the payload is malformed or missing required fields, the handoff is rejected and escalated to human review rather than proceeding with incomplete information.
+4.  **Completion Signal:** After the downstream agent resolves the request, it emits a structured completion signal back to the orchestrator, closing the coordination loop.
+
+### Operational Guarantees
+
+This architecture provides three critical guarantees: no context is lost during handoffs (serialized state), no agent receives requests it cannot handle (schema validation), and every coordination decision is auditable (orchestrator logging). These guarantees are non-negotiable for enterprise deployments where regulatory compliance requires explainable AI decision chains.
+    `,
+  },
+  {
+    id: "7",
+    slug: "zero-downtime-ai-infrastructure-migrations",
+    title: "Deployment Guide: Zero-Downtime AI Infrastructure Migrations",
+    category: "Workflow Intelligence",
+    date: "May 22, 2026",
+    readTime: "7 min read",
+    summary: "Blue-green deployment strategies for live AI systems, database migration patterns for multi-tenant SaaS, and rollback procedures for inference pipeline updates.",
+    author: "Akula Naveenkumar",
+    authorRole: "Founder",
+    content: `
+## The Migration Risk
+
+Updating a live AI infrastructure system is fundamentally different from deploying a traditional web application. A failed deployment does not just show users a 500 error — it can trigger incorrect automated decisions, corrupt workflow states, or silently degrade inference quality without obvious symptoms.
+
+### Blue-Green Deployment for AI Systems
+
+The blue-green pattern maintains two identical production environments. Traffic is routed to the "blue" environment while the "green" environment receives the update. Once validated, traffic is switched atomically.
+
+#### AI-Specific Considerations:
+
+1.  **Model Version Pinning:** Each environment pins specific model versions and inference configurations. The green environment uses the new model while blue continues serving the proven version.
+2.  **Shadow Traffic Testing:** Before switching, a percentage of production traffic is duplicated to the green environment. Responses are compared but not served to users. This validates inference quality under real-world input distributions.
+3.  **State Machine Compatibility:** When updating workflow engines, both environments must handle in-flight workflow instances. Workflows started on blue must be able to resume on green. This requires backward-compatible state schemas.
+
+### Database Migration for Multi-Tenant Systems
+
+Multi-tenant database migrations introduce the additional constraint that schema changes must not disrupt any tenant's active operations.
+
+#### The Expand-Contract Pattern:
+
+1.  **Expand Phase:** Add new columns or tables alongside existing ones. Deploy application code that writes to both old and new structures simultaneously.
+2.  **Migration Phase:** Backfill existing data into the new structure during off-peak hours, processing one tenant at a time.
+3.  **Contract Phase:** Once all tenants are migrated and validated, remove the old structures and legacy code paths.
+
+### Rollback Procedures
+
+Every deployment includes a pre-validated rollback procedure. For inference pipelines, this means maintaining the previous model version in warm standby. For database changes, this means the expand phase is inherently rollback-safe since the old structure remains intact until the contract phase.
+    `,
+  },
+  {
+    id: "8",
+    slug: "operational-anomaly-detection-workflows",
+    title: "Operational Intelligence: Real-Time Anomaly Detection in Business Workflows",
+    category: "AI Infrastructure",
+    date: "May 24, 2026",
+    readTime: "8 min read",
+    summary: "Detecting operational anomalies using statistical baselines, designing alert routing hierarchies, and building observability dashboards for enterprise workflow systems.",
+    author: "AAL Engineering",
+    authorRole: "Infrastructure Team",
+    content: `
+## Beyond Monitoring: Operational Intelligence
+
+Traditional monitoring answers "is the system up?" Operational intelligence answers "is the system behaving correctly?" A workflow engine might report 100% uptime while silently processing invoices at half the expected rate — a situation that monitoring alone cannot detect.
+
+### Statistical Baseline Construction
+
+The foundation of anomaly detection is establishing what "normal" looks like for each operational metric. This requires building statistical baselines that account for temporal patterns.
+
+#### Baseline Methodology:
+
+1.  **Historical Aggregation:** Collect 30-90 days of operational metrics (processing times, throughput rates, error ratios, queue depths) segmented by hour-of-day and day-of-week.
+2.  **Seasonal Decomposition:** Separate the signal into trend, seasonal, and residual components. Business workflows exhibit strong weekly patterns that must be modeled explicitly.
+3.  **Dynamic Thresholds:** Rather than static alert thresholds, compute dynamic bounds based on rolling standard deviations. A processing time of 5 seconds might be normal during peak hours but anomalous at 3 AM.
+
+### Alert Routing Architecture
+
+Raw anomaly signals generate excessive noise. The alert routing layer transforms signals into actionable notifications.
+
+#### Routing Hierarchy:
+
+1.  **Severity Classification:** Anomalies are classified as informational, warning, or critical based on magnitude (deviation from baseline) and impact scope (single workflow vs. system-wide).
+2.  **Correlation Engine:** Multiple simultaneous anomalies are correlated to identify root causes. A spike in processing time concurrent with a queue depth increase suggests a capacity issue, not an application bug.
+3.  **Escalation Paths:** Informational alerts are logged silently. Warnings notify the on-call team via Slack. Critical alerts trigger immediate notification via WhatsApp and email with pre-computed diagnostic context.
+
+### Dashboard Design Principles
+
+Operational dashboards should provide three layers of information: system health at a glance (green/yellow/red), trend visualization for the past 24 hours, and drill-down capability into specific workflow execution traces. Each layer serves a different user: executives, operations managers, and engineers respectively.
+
+The key insight is that observability is not a feature — it is infrastructure. It must be designed into the system architecture from the beginning, not bolted on after operational issues emerge.
     `,
   }
 ];

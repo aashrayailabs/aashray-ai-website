@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Outer Network Dashed Ring -->
+  <path d="M 226 59 A 215 215 0 0 0 41 256 A 215 215 0 0 0 226 453" stroke="currentColor" stroke-width="3" stroke-dasharray="8 12" stroke-linecap="round" opacity="0.4" />
+  <path d="M 286 59 A 215 215 0 0 1 471 256 A 215 215 0 0 1 286 453" stroke="currentColor" stroke-width="3" stroke-dasharray="8 12" stroke-linecap="round" opacity="0.4" />
+
+  <!-- Thick Protective Arcs -->
+  <path d="M 206 82 A 180 180 0 0 0 76 256 A 180 180 0 0 0 206 430" stroke="currentColor" stroke-width="18" stroke-linecap="round" />
+  <path d="M 306 82 A 180 180 0 0 1 436 256 A 180 180 0 0 1 306 430" stroke="currentColor" stroke-width="18" stroke-linecap="round" />
+
+  <!-- Connecting Node Markers -->
+  <circle cx="206" cy="82" r="6" fill="currentColor" />
+  <circle cx="206" cy="430" r="6" fill="currentColor" />
+  <circle cx="306" cy="82" r="6" fill="currentColor" />
+  <circle cx="306" cy="430" r="6" fill="currentColor" />
+
+  <!-- Central Flame -->
+  <path d="M 256 135 C 210 215, 200 285, 220 335 C 230 360, 242 368, 256 368 C 270 368, 282 360, 292 335 C 312 285, 302 215, 256 135 Z" fill="currentColor" />
+</svg>

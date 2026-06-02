@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { insightsData } from '@/lib/insights-data';
+import { publications } from '@/lib/publications';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://aashrayailabs.com';
@@ -7,13 +7,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Core static routes
   const routes = [
     '',
+    '/platforms',
+    '/infrastructure',
+    '/governance',
+    '/security',
+    '/research',
     '/about',
-    '/ai-agents',
-    '/ai-products',
-    '/industries',
-    '/workflow-systems',
-    '/insights',
     '/contact',
+    '/trust-center',
+    '/status',
+    '/architecture',
+    '/whitepapers',
+    '/legal',
+    '/privacy',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
@@ -21,13 +27,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  // Dynamic Insight routes
-  const insightRoutes = insightsData.map((insight) => ({
-    url: `${baseUrl}/insights/${insight.slug}`,
-    lastModified: new Date(insight.date).toISOString(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  // Dynamic Research routes
+  const researchRoutes = publications.map((pub) => {
+    let dateStr = new Date().toISOString();
+    try {
+      dateStr = new Date(pub.date).toISOString();
+    } catch (e) {
+      // fallback
+    }
+    return {
+      url: `${baseUrl}/research/${pub.slug}`,
+      lastModified: dateStr,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    };
+  });
 
-  return [...routes, ...insightRoutes];
+  return [...routes, ...researchRoutes];
 }
+

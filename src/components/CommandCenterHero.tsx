@@ -1,188 +1,184 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Terminal, Activity, Database, Smartphone, Shield, Zap, Server } from "lucide-react";
+import { ArrowRight, Cpu, Lock, Activity, ShieldCheck, Zap, Database } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function CommandCenterHero() {
-  const [mounted, setMounted] = useState(false);
-  const [throughput, setThroughput] = useState(482);
-  
-  useEffect(() => {
-    setMounted(true);
-    const interval = setInterval(() => {
-      setThroughput(prev => prev + Math.floor(Math.random() * 10) - 2);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
-    <div className="relative pt-32 md:pt-48 pb-20 overflow-hidden font-sans">
+    <div className="relative pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-16 md:pb-28 overflow-hidden font-sans bg-[#0c0d0f] text-[#cbd5e1] border-b border-white/[0.03]">
       
       {/* Background Lighting specifically for the Hero */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] bg-cyan-900/10 blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[400px] bg-cyan-950/10 blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT COLUMN: Typography & Action */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-2xl"
-          >
-            {/* Live Uptime Strip */}
-            <div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/[0.05] mb-8 shadow-lg backdrop-blur-md">
+          <div className="lg:col-span-7 max-w-3xl">
+            {/* Live Status Strip */}
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/[0.05] mb-8">
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-zinc-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-zinc-500"></span>
               </span>
-              <span className="text-[10px] text-gray-400 font-mono tracking-widest uppercase font-semibold">
-                System Operational • 99.99% Uptime
+              <span className="text-[9px] text-zinc-400 font-mono tracking-widest uppercase font-bold">
+                Operational AI Infrastructure Studio
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.05] text-white mb-6">
-              AI Infrastructure <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
-                For Modern Business Operations
-              </span>
+            {/* Large editorial title */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.08] text-white mb-4 sm:mb-6 font-display">
+              Operational AI Infrastructure <br className="hidden md:inline" />
+              for Enterprise Systems
             </h1>
 
-            <p className="text-lg text-gray-400 leading-relaxed font-medium mb-10 max-w-xl">
-              Deploy intelligent workflow systems, customer servicing automation, operational dashboards, and AI-driven business infrastructure — without technical complexity.
+            {/* Business-oriented Subheadline */}
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-zinc-400 leading-relaxed font-medium mb-8 md:mb-10 max-w-2xl text-justify md:text-left">
+              We help organizations automate workflows, streamline operations, and deploy secure AI-driven systems across enterprise environments.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
-              <Link href="/contact" className="group px-8 py-4 rounded-md bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-                Schedule Consultation 
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-0">
+              <Link href="/contact" className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-[#ffffff] text-black font-bold hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center text-[10px] sm:text-xs tracking-wider uppercase shadow-md font-sans">
+                Schedule Architecture Review
               </Link>
-              <Link href="/industries" className="group px-8 py-4 rounded-md bg-transparent border border-white/10 hover:border-cyan-500/50 text-white font-semibold transition-all duration-300 flex items-center justify-center hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] relative overflow-hidden">
-                <span className="relative z-10 flex items-center">
-                  Explore Infrastructure <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
+              <Link href="/platforms" className="group px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-transparent border border-white/10 hover:border-white/20 text-white font-bold transition-all duration-300 flex items-center justify-center text-[10px] sm:text-xs tracking-wider uppercase font-sans">
+                Explore Platform <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
+          </div>
 
-            {/* Enterprise Trust Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { label: "AI Operations", value: "24/7", icon: Activity, color: "text-cyan-400" },
-                { label: "Efficiency", value: "+40%", icon: Zap, color: "text-emerald-400" },
-                { label: "Visibility", value: "100%", icon: LayoutDashboard, color: "text-blue-400" },
-                { label: "Deployment", value: "Global", icon: Globe, color: "text-violet-400" },
-              ].map((metric, i) => (
-                <div key={i} className="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-1 flex items-center gap-1.5">
-                    <metric.icon className={`w-3 h-3 ${metric.color}`} />
-                    {metric.label}
-                  </p>
-                  <p className="text-xl font-bold text-white tracking-tight">{metric.value}</p>
+          {/* RIGHT COLUMN: Premium Animated Operational AI Visualizer */}
+          <div className="lg:col-span-5 hidden lg:flex flex-col justify-center items-center h-[390px] relative w-full">
+            {/* Visualizer Frame */}
+            <div className="w-full h-full bg-[#08080a] border border-white/[0.08] rounded-2xl relative overflow-hidden flex flex-col justify-between p-6 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+              
+              {/* Grid backdrop */}
+              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02] pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#08080a_98%)] pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-blue-950/5 via-transparent to-transparent pointer-events-none" />
+
+              {/* Status Header */}
+              <div className="relative z-10 flex justify-between items-center w-full">
+                <div className="flex items-center gap-2">
+                  <Activity className="w-3.5 h-3.5 text-blue-400" />
+                  <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest font-bold">Runtime Orchestrator</span>
                 </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* RIGHT COLUMN: The Visual Engine */}
-          <div className="relative h-[600px] w-full flex items-center justify-center">
-            
-            {/* The Central AI Core */}
-            <motion.div 
-              className="absolute w-32 h-32 rounded-2xl bg-[#050505] border border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.15)] flex items-center justify-center z-20"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-2xl" />
-              <Brain className="w-12 h-12 text-cyan-400" />
-              <div className="absolute -bottom-8 bg-black/80 px-3 py-1 rounded border border-white/10 text-[9px] text-cyan-400 font-mono tracking-widest backdrop-blur-md">
-                ROUTING CORE
+                <div className="px-2 py-0.5 rounded bg-blue-950/20 border border-blue-500/20 text-[8px] font-mono text-blue-400 font-bold uppercase tracking-wider animate-pulse">
+                  Telemetry Active
+                </div>
               </div>
-            </motion.div>
 
-            {/* Orbiting Nodes & Connections */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 600 600">
-              <defs>
-                <linearGradient id="flowPulse" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#06b6d4" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.2" />
-                </linearGradient>
-              </defs>
+              {/* Interactive Telemetry Visualization Map */}
+              <div className="relative w-full h-[220px] flex items-center justify-center">
+                {/* SVG Connections and Pulses */}
+                <svg className="absolute inset-0 w-full h-full opacity-70 pointer-events-none" viewBox="0 0 400 220">
+                  <defs>
+                    <linearGradient id="packetGlowHero" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#06b6d4" />
+                      <stop offset="50%" stopColor="#2563eb" />
+                      <stop offset="100%" stopColor="#a855f7" />
+                    </linearGradient>
+                    <linearGradient id="lineGradHero" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.1" />
+                      <stop offset="50%" stopColor="#2563eb" stopOpacity="0.2" />
+                      <stop offset="100%" stopColor="#a855f7" stopOpacity="0.1" />
+                    </linearGradient>
+                  </defs>
 
-              {/* CRM Connection */}
-              <motion.path d="M 100 200 Q 200 300 300 300" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="4 4" />
-              <motion.path d="M 100 200 Q 200 300 300 300" fill="none" stroke="url(#flowPulse)" strokeWidth="2" 
-                initial={{ strokeDasharray: "0 1000" }} animate={{ strokeDasharray: ["0 1000", "500 0"] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }} />
-              
-              {/* WhatsApp Connection */}
-              <motion.path d="M 500 200 Q 400 300 300 300" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="4 4" />
-              <motion.path d="M 500 200 Q 400 300 300 300" fill="none" stroke="url(#flowPulse)" strokeWidth="2" 
-                initial={{ strokeDasharray: "0 1000" }} animate={{ strokeDasharray: ["0 1000", "500 0"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 1 }} />
-              
-              {/* Database Connection */}
-              <motion.path d="M 300 500 L 300 300" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="4 4" />
-              <motion.path d="M 300 500 L 300 300" fill="none" stroke="url(#flowPulse)" strokeWidth="2" 
-                initial={{ strokeDasharray: "0 1000" }} animate={{ strokeDasharray: ["0 1000", "500 0"] }} transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 0.5 }} />
-            </svg>
+                  {/* Draw Curved Connection Lines */}
+                  <path d="M 50 110 Q 100 50 150 60" fill="none" stroke="url(#lineGradHero)" strokeWidth="1.5" />
+                  <path d="M 50 110 Q 100 170 150 160" fill="none" stroke="url(#lineGradHero)" strokeWidth="1.5" />
+                  <path d="M 150 60 Q 200 85 250 110" fill="none" stroke="url(#lineGradHero)" strokeWidth="1.5" />
+                  <path d="M 150 160 Q 200 135 250 110" fill="none" stroke="url(#lineGradHero)" strokeWidth="1.5" />
+                  <path d="M 250 110 L 350 110" fill="none" stroke="url(#lineGradHero)" strokeWidth="1.5" />
 
-            {/* Floating Node: CRM */}
-            <motion.div 
-              className="absolute top-[150px] left-[50px] w-14 h-14 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-xl flex items-center justify-center z-20"
-              animate={{ y: [0, 15, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            >
-              <Database className="w-5 h-5 text-gray-400" />
-              <div className="absolute -top-6 bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[8px] text-gray-300 font-mono tracking-widest backdrop-blur-md">CRM SYNC</div>
-            </motion.div>
+                  {/* Active routing pulses */}
+                  <motion.circle r="2.5" fill="url(#packetGlowHero)"
+                    animate={{ 
+                      cx: [50, 100, 150, 200, 250, 350], 
+                      cy: [110, 70, 60, 85, 110, 110] 
+                    }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "linear" }}
+                  />
+                  <motion.circle r="2.5" fill="url(#packetGlowHero)"
+                    animate={{ 
+                      cx: [50, 100, 150, 200, 250, 350], 
+                      cy: [110, 150, 160, 135, 110, 110] 
+                    }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "linear", delay: 2.25 }}
+                  />
 
-            {/* Floating Node: WhatsApp */}
-            <motion.div 
-              className="absolute top-[150px] right-[50px] w-14 h-14 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-xl flex items-center justify-center z-20"
-              animate={{ y: [0, -15, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            >
-              <Smartphone className="w-5 h-5 text-green-400" />
-              <div className="absolute -top-6 bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[8px] text-green-400 font-mono tracking-widest backdrop-blur-md">WHATSAPP ENGINE</div>
-            </motion.div>
+                  {/* Checkpoint checkpoints */}
+                  <circle cx="200" cy="85" r="2.5" fill="#a855f7" className="animate-pulse" />
+                  <circle cx="200" cy="135" r="2.5" fill="#2563eb" className="animate-pulse" />
+                </svg>
 
-            {/* Floating Node: Infrastructure DB */}
-            <motion.div 
-              className="absolute bottom-[50px] left-[50%] -translate-x-[50%] w-14 h-14 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-xl flex items-center justify-center z-20"
-              animate={{ y: [0, 10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            >
-              <Server className="w-5 h-5 text-blue-400" />
-              <div className="absolute -bottom-6 bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[8px] text-blue-400 font-mono tracking-widest backdrop-blur-md">OPERATIONAL DB</div>
-            </motion.div>
+                {/* Nodes HTML Overlay */}
+                {/* Node 1: Ingestion */}
+                <div className="absolute left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5 group cursor-pointer">
+                  <motion.div 
+                    whileHover={{ scale: 1.08, borderColor: "rgba(6, 182, 212, 0.4)" }}
+                    className="w-9 h-9 rounded-xl bg-[#0c0d10] border border-white/10 flex items-center justify-center shadow-lg transition-colors"
+                  >
+                    <Database className="w-4 h-4 text-zinc-400 group-hover:text-cyan-400 transition-colors" />
+                  </motion.div>
+                  <span className="text-[8px] font-mono text-zinc-500 group-hover:text-zinc-300 font-bold uppercase tracking-wider transition-colors">Ingress</span>
+                </div>
 
-            {/* Live Operational Widgets */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }}
-              className="absolute top-[80px] right-0 bg-[#050505]/80 backdrop-blur-md border border-white/10 p-3 rounded-lg shadow-2xl z-30"
-            >
-              <p className="text-[9px] text-gray-500 uppercase tracking-widest mb-1 font-semibold flex items-center gap-1.5">
-                <Activity className="w-3 h-3 text-cyan-400" /> API Throughput
-              </p>
-              <p className="text-lg font-mono text-white flex items-center gap-2">
-                {throughput} <span className="text-[10px] text-gray-500">req/s</span>
-              </p>
-            </motion.div>
+                {/* Node 2: Intent Audit */}
+                <div className="absolute left-[132px] top-6 flex flex-col items-center gap-1.5 group cursor-pointer">
+                  <motion.div 
+                    whileHover={{ scale: 1.08, borderColor: "rgba(168, 85, 247, 0.4)" }}
+                    className="w-9 h-9 rounded-xl bg-[#0c0d10] border border-purple-500/20 flex items-center justify-center shadow-lg transition-colors"
+                  >
+                    <Cpu className="w-4 h-4 text-purple-400 animate-pulse" />
+                  </motion.div>
+                  <span className="text-[8px] font-mono text-zinc-500 group-hover:text-zinc-300 font-bold uppercase tracking-wider transition-colors">Intent</span>
+                </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.5 }}
-              className="absolute bottom-[150px] left-0 bg-[#050505]/80 backdrop-blur-md border border-white/10 p-3 rounded-lg shadow-2xl z-30"
-            >
-              <p className="text-[9px] text-gray-500 uppercase tracking-widest mb-1 font-semibold flex items-center gap-1.5">
-                <Shield className="w-3 h-3 text-emerald-400" /> Security Protocol
-              </p>
-              <p className="text-xs font-mono text-emerald-400 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> ENCRYPTED ROUTING
-              </p>
-            </motion.div>
+                {/* Node 3: Policy Guard */}
+                <div className="absolute left-[132px] bottom-6 flex flex-col items-center gap-1.5 group cursor-pointer">
+                  <motion.div 
+                    whileHover={{ scale: 1.08, borderColor: "rgba(37, 99, 235, 0.4)" }}
+                    className="w-9 h-9 rounded-xl bg-[#0c0d10] border border-white/10 flex items-center justify-center shadow-lg transition-colors"
+                  >
+                    <Lock className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 transition-colors" />
+                  </motion.div>
+                  <span className="text-[8px] font-mono text-zinc-500 group-hover:text-zinc-300 font-bold uppercase tracking-wider transition-colors">Policy</span>
+                </div>
 
+                {/* Node 4: Orchestrator Core */}
+                <div className="absolute left-[232px] top-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5 group cursor-pointer">
+                  <motion.div 
+                    whileHover={{ scale: 1.08, borderColor: "rgba(6, 182, 212, 0.5)" }}
+                    className="w-10 h-10 rounded-xl bg-black border border-cyan-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-colors"
+                  >
+                    <ShieldCheck className="w-4.5 h-4.5 text-cyan-400" />
+                  </motion.div>
+                  <span className="text-[8px] font-mono text-cyan-400 font-bold uppercase tracking-wider">MitraAI</span>
+                </div>
+
+                {/* Node 5: Egress */}
+                <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5 group cursor-pointer">
+                  <motion.div 
+                    whileHover={{ scale: 1.08, borderColor: "rgba(168, 85, 247, 0.4)" }}
+                    className="w-9 h-9 rounded-xl bg-[#0c0d10] border border-white/10 flex items-center justify-center shadow-lg transition-colors"
+                  >
+                    <Zap className="w-4 h-4 text-zinc-400 group-hover:text-purple-400 transition-colors" />
+                  </motion.div>
+                  <span className="text-[8px] font-mono text-zinc-555 group-hover:text-zinc-300 font-bold uppercase tracking-wider transition-colors">Egress</span>
+                </div>
+              </div>
+
+              {/* Status footer with telemetry stats */}
+              <div className="relative z-10 flex justify-between items-center pt-3 border-t border-white/5 font-mono text-[9px] text-zinc-500 w-full">
+                <span className="flex items-center gap-1"><Activity className="w-3 h-3 text-cyan-400 animate-pulse" /> Latency: 12.4ms</span>
+                <span>Active VPCs: 4</span>
+                <span className="text-blue-400 font-bold">Queue: Nominal</span>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -190,6 +186,3 @@ export default function CommandCenterHero() {
     </div>
   );
 }
-
-// Missing imports 
-import { Globe, Brain, LayoutDashboard } from "lucide-react";

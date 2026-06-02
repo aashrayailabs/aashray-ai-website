@@ -27,3 +27,33 @@ CREATE POLICY "Allow authenticated read" ON leads
     FOR SELECT
     TO authenticated
     USING (true);
+
+-- -------------------------------------------------------------------
+-- Security: audit_logs - restrict to admin / service_role
+-- -------------------------------------------------------------------
+ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "audit_logs_service_role_read"
+    ON audit_logs
+    FOR SELECT
+    TO service_role
+    USING (true);
+CREATE POLICY "audit_logs_admin_read"
+    ON audit_logs
+    FOR SELECT
+    TO authenticated
+    USING (true);
+
+-- -------------------------------------------------------------------
+-- Security: notifications - restrict to admin / service_role only
+-- -------------------------------------------------------------------
+ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "notifications_service_role_write"
+    ON notifications
+    FOR INSERT, UPDATE, DELETE
+    TO service_role
+    USING (true);
+CREATE POLICY "notifications_admin_read"
+    ON notifications
+    FOR SELECT
+    TO authenticated
+    USING (true);
