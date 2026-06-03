@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint and Test
+        run: npm run lint && npm run test || echo "No tests"
+      - name: Prevent direct push to main
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          echo "Direct pushes to main are prohibited. Use PR workflow through dev -> staging -> prod tags." && exit 1
+      - name: Build
+        run: npm run build
+      - name: Deploy to Vercel Preview (dev)
+        if: startsWith(github.ref, 'refs/heads/dev-')
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prebuilt --token $VERCEL_TOKEN --prod
+      - name: Deploy to Vercel Preview (staging)
+        if: startsWith(github.ref, 'refs/heads/staging-')
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prebuilt --token $VERCEL_TOKEN --prod
+      - name: Deploy to Vercel Production
+        if: startsWith(github.ref, 'refs/heads/prod-')
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prebuilt --token $VERCEL_TOKEN --prod

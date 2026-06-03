@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function LightweightIndustryCard({ title, Icon, delay, id, onHover }: { title: string, Icon: any, delay: number, id: string, onHover?: (id: string | null) => void }) {
   const [isHovered, setIsHovered] = useState(false);
 

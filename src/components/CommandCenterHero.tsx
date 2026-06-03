@@ -37,6 +37,11 @@ export default function CommandCenterHero() {
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-zinc-400 leading-relaxed font-medium mb-8 md:mb-10 max-w-2xl text-justify md:text-left">
               We help organizations automate workflows, streamline operations, and deploy secure AI-driven systems across enterprise environments.
             </p>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-zinc-400 leading-relaxed font-medium mb-8 md:mb-10 max-w-2xl text-justify md:text-left">
+                AASHRAY_TEST_2026_999
+                {/* Commit SHA badge (visible in production) */}
+                <span className="text-xs text-gray-400 mt-2 block">Commit: {process.env.NEXT_PUBLIC_BUILD_SHA?.slice(0,7) || 'dev'}</span>
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-0">
               <Link href="/contact" className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-[#ffffff] text-black font-bold hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center text-[10px] sm:text-xs tracking-wider uppercase shadow-md font-sans">
