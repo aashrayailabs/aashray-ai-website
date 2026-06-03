@@ -30,7 +30,7 @@ export default function Home() {
           <div className="max-w-3xl mb-16 md:mb-20">
             <p className="text-[10px] sm:text-xs text-zinc-500 font-mono tracking-widest uppercase mb-3">Core Solutions</p>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-zinc-900 mb-6 font-display">
-              Ecosystem Platforms
+              Enterprise Solutions
             </h2>
             <p className="text-base sm:text-lg text-zinc-650 leading-relaxed font-medium">
               Operational AI infrastructure and workflow automation systems built for financial operations, advisors, and enterprise workflows.
