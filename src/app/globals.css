@@ -1,5 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@source not "../../aashray_homepage.html";
+@source not "../../live_homepage.html";
+@source not "../../homepage.html";
+@source not "../../production.html";
+@source not "../../preview.html";
+@source not "../../vercel_homepage.html";
+@source not "../../replace_grid.js";
+@source not "../../scan.mjs";
+@source not "../../aashray-ai-website";
 
 @theme inline {
   --color-background: #0a0a0c; /* Deep graphite black background */
@@ -24,8 +33,11 @@
   color-scheme: dark; /* Default to dark color scheme */
 }
 
+
+
 body {
   background-color: var(--color-background);
+
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;

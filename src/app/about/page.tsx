@@ -18,7 +18,7 @@ export default function About() {
     >
       {/* Visual Atmosphere Depth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--color-primary)/5,_transparent)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.015] pointer-events-none" />
       
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div

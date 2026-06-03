@@ -23,10 +23,10 @@ CREATE POLICY "Allow anonymous inserts" ON leads
     WITH CHECK (true);
 
 -- Only authenticated admins can read the leads
-CREATE POLICY "Allow authenticated read" ON leads
+CREATE POLICY "Allow admin read" ON leads
     FOR SELECT
     TO authenticated
-    USING (true);
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
 
 -- -------------------------------------------------------------------
 -- Security: audit_logs - restrict to admin / service_role
@@ -41,7 +41,12 @@ CREATE POLICY "audit_logs_admin_read"
     ON audit_logs
     FOR SELECT
     TO authenticated
-    USING (true);
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
+CREATE POLICY "audit_logs_insert"
+    ON audit_logs
+    FOR INSERT
+    TO anon, authenticated
+    WITH CHECK (true);
 
 -- -------------------------------------------------------------------
 -- Security: notifications - restrict to admin / service_role only
@@ -56,4 +61,46 @@ CREATE POLICY "notifications_admin_read"
     ON notifications
     FOR SELECT
     TO authenticated
-    USING (true);
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
+
+-- -------------------------------------------------------------------
+-- Security: lead_tasks - restrict to admin
+-- -------------------------------------------------------------------
+ALTER TABLE lead_tasks ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "lead_tasks_admin_all" ON lead_tasks
+    FOR ALL
+    TO authenticated
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin')
+    WITH CHECK (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
+
+-- -------------------------------------------------------------------
+-- Security: lead_activities - restrict to admin
+-- -------------------------------------------------------------------
+ALTER TABLE lead_activities ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "lead_activities_admin_all" ON lead_activities
+    FOR ALL
+    TO authenticated
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin')
+    WITH CHECK (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
+
+-- -------------------------------------------------------------------
+-- Security: lead_notes - restrict to admin
+-- -------------------------------------------------------------------
+ALTER TABLE lead_notes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "lead_notes_admin_all" ON lead_notes
+    FOR ALL
+    TO authenticated
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin')
+    WITH CHECK (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
+
+-- -------------------------------------------------------------------
+-- Security: incidents - restrict to admin
+-- -------------------------------------------------------------------
+ALTER TABLE incidents ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "incidents_admin_all" ON incidents
+    FOR ALL
+    TO authenticated
+    USING (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin')
+    WITH CHECK (auth.jwt() -> 'app_metadata' ->> 'role' = 'super_admin' OR auth.jwt() -> 'user_metadata' ->> 'role' = 'super_admin');
+
+

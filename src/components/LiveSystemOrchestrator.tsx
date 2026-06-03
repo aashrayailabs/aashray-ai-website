@@ -23,7 +23,7 @@ export default function LiveSystemOrchestrator() {
       
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl h-[400px] bg-blue-900/10 blur-[150px] pointer-events-none rounded-full" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.03] pointer-events-none" />
 
       {/* Grid Scanline Animation */}
       <motion.div 

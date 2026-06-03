@@ -7,7 +7,7 @@ export default function OrchestrationPipelineVisual() {
   return (
     <div className="w-full mt-16 rounded-2xl bg-[#050505] border border-white/10 p-6 md:p-12 relative overflow-hidden shadow-2xl">
       {/* Background Grid */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-5 pointer-events-none" />
       
       {/* Animated Light Sweep */}
       <motion.div 

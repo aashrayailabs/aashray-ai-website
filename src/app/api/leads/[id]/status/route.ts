@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { logAuditEvent } from '@/lib/audit';
+import { verifyAdminSession } from '@/lib/auth';
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  if (!(await verifyAdminSession())) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
   try {
     const { id } = await params;
     const body = await req.json();

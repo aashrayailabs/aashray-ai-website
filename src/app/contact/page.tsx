@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen pt-32 pb-24 md:pt-40 md:pb-32 bg-[#faf9f6] text-zinc-700">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-primary)/3,_transparent)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.01] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.01] pointer-events-none" />
       
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">

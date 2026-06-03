@@ -89,7 +89,7 @@ export default function GlobalNetworkMap() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-950/15 via-black to-[#040406] pointer-events-none" />
       
       {/* Background Slow Grid */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03] mix-blend-screen pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.03] mix-blend-screen pointer-events-none" />
 
       {/* Background Neural Telemetry Pulse Nodes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

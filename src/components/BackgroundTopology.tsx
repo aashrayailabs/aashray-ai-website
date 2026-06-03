@@ -12,7 +12,7 @@ export default function BackgroundTopology() {
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#020202]">
       {/* Base Grid */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] opacity-[0.03]" />
 
       {/* Atmospheric Gradients */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-cyan-900/10 blur-[150px] rounded-full" />

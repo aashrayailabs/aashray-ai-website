@@ -59,7 +59,7 @@ export default function CommandCenterHero() {
             <div className="w-full h-full bg-[#08080a] border border-white/[0.08] rounded-2xl relative overflow-hidden flex flex-col justify-between p-6 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
               
               {/* Grid backdrop */}
-              <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02] pointer-events-none" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.02] pointer-events-none" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#08080a_98%)] pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-blue-950/5 via-transparent to-transparent pointer-events-none" />
 

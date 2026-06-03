@@ -136,7 +136,7 @@ export default function DynamicCenterpiece({ activeIndustry }: { activeIndustry:
       
       {/* Low opacity topology grid with ambient pulse */}
       <motion.div 
-        className="absolute inset-0 bg-[url('/grid.svg')] bg-center mix-blend-screen pointer-events-none"
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center mix-blend-screen pointer-events-none"
         initial={{ opacity: 0.02 }}
         animate={{ opacity: [0.02, 0.05, 0.02] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}

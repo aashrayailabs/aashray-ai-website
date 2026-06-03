@@ -547,7 +547,7 @@ export default function DynamicIndustryShowcase({ activeIndustryId }: { activeIn
       <div className="flex-1 flex flex-col bg-[#020202] relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-900/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-20 pointer-events-none" />
 
         {/* Top Metrics Row */}
         <div className="grid grid-cols-3 gap-4 p-6 border-b border-white/5 relative z-10 bg-black/40 backdrop-blur-md">

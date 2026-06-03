@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-import { getServerSession } from "@supabase/auth-helpers-nextjs";
+import { verifyAdminSession } from "@/lib/auth";
 
 export async function GET() {
-  const { data: { session } } = await getServerSession();
-  if (!session?.user?.role?.includes("super_admin")) {
+  if (!(await verifyAdminSession())) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
   const { data, error } = await supabase.from("incidents").select("*");

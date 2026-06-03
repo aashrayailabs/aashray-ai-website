@@ -1,7 +1,12 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { verifyAdminSession } from '@/lib/auth';
 
 export async function GET(req: Request) {
+  if (!(await verifyAdminSession())) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
   const { searchParams } = new URL(req.url);
   const lead_id = searchParams.get('lead_id');
   

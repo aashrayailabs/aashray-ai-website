@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { logAuditEvent } from '@/lib/audit';
+import { verifyAdminSession } from '@/lib/auth';
 
 export async function GET(req: Request) {
+  if (!(await verifyAdminSession())) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
   const { searchParams } = new URL(req.url);
   const lead_id = searchParams.get('lead_id');
   
@@ -16,6 +21,10 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  if (!(await verifyAdminSession())) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
   try {
     const body = await req.json();
     const { lead_id, title, due_date, completed = false, performed_by = 'system' } = body;

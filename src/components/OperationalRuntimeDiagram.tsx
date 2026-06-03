@@ -116,7 +116,7 @@ export default function OperationalRuntimeDiagram() {
   return (
     <section className="section-dark py-16 md:py-24 lg:py-32 relative overflow-hidden border-t border-white/[0.04] bg-[#0a0a0c]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-950/10 via-black to-[#050505] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.03] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
         
@@ -164,7 +164,7 @@ export default function OperationalRuntimeDiagram() {
             
             {/* Ambient glows inside panel */}
             <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/[0.04] via-transparent to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.04] mix-blend-screen pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.04] mix-blend-screen pointer-events-none" />
             {/* Tiny noise texture */}
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[400px] bg-cyan-900/15 blur-[150px] rounded-full pointer-events-none" />

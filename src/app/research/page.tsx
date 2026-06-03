@@ -27,7 +27,7 @@ export default function ResearchPage() {
     <div className="min-h-screen pt-32 pb-24 relative overflow-hidden bg-[#faf9f6] text-zinc-700">
       {/* Background elements */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-500/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.015] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.015] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-6xl">
         
