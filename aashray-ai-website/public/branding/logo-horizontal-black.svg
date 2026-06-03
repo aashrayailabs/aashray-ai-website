@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" fill="none">
+  <defs>
+    <!-- Dark Infrastructure Navy Gradient -->
+    <linearGradient id="navyGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Dark Gold Gradient -->
+    <linearGradient id="darkGoldGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#78350f" />
+      <stop offset="60%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- Inner Core Gradient -->
+    <linearGradient id="innerDarkGoldGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Mark Group -->
+  <g transform="translate(60, 44) scale(0.41)">
+    <!-- Outer Network Dashed Ring -->
+    <path d="M 226 59 A 215 215 0 0 0 41 256 A 215 215 0 0 0 226 453" stroke="#475569" stroke-width="3" stroke-dasharray="8 12" stroke-linecap="round" opacity="0.4" />
+    <path d="M 286 59 A 215 215 0 0 1 471 256 A 215 215 0 0 1 286 453" stroke="#475569" stroke-width="3" stroke-dasharray="8 12" stroke-linecap="round" opacity="0.4" />
+
+    <!-- Thick Protective Arcs (Aashray) -->
+    <path d="M 206 82 A 180 180 0 0 0 76 256 A 180 180 0 0 0 206 430" stroke="url(#navyGrad)" stroke-width="18" stroke-linecap="round" />
+    <path d="M 306 82 A 180 180 0 0 1 436 256 A 180 180 0 0 1 306 430" stroke="url(#navyGrad)" stroke-width="18" stroke-linecap="round" />
+
+    <!-- Node Markers -->
+    <circle cx="206" cy="82" r="6" fill="#b45309" />
+    <circle cx="206" cy="430" r="6" fill="#b45309" />
+    <circle cx="306" cy="82" r="6" fill="#b45309" />
+    <circle cx="306" cy="430" r="6" fill="#b45309" />
+
+    <!-- Flame Core -->
+    <path d="M 256 135 C 210 215, 200 285, 220 335 C 230 360, 242 368, 256 368 C 270 368, 282 360, 292 335 C 312 285, 302 215, 256 135 Z" fill="url(#darkGoldGrad)" />
+    <path d="M 256 195 C 232 245, 228 290, 240 325 C 245 338, 250 342, 256 342 C 262 342, 267 338, 272 325 C 284 290, 280 245, 256 195 Z" fill="url(#innerDarkGoldGrad)" opacity="0.9" />
+  </g>
+
+  <!-- Typography -->
+  <text x="320" y="155" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-size="92" font-weight="700" fill="#0f172a" letter-spacing="-2">
+    Aashray <tspan font-weight="300" fill="#64748b">AI Labs</tspan>
+  </text>
+  
+  <text x="325" y="210" font-family="'JetBrains Mono', ui-monospace, 'SF Mono', monospace" font-size="20" font-weight="600" fill="#0f172a" letter-spacing="12">
+    ENTERPRISE AI INFRASTRUCTURE
+  </text>
+</svg>
