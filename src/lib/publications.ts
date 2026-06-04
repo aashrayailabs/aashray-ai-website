@@ -288,21 +288,21 @@ export const publications: Publication[] = [
     date: "May 10, 2026",
     readTime: "14 min read",
     excerpt: "Configuring security groups, stateless gateways, and local PostgreSQL ledger databases on AWS/GCP VPCs.",
-    summary: "For organizations operating under strict data residency directives, cloud hosting requires private VPC subnets. This deployment guide provides the exact network topology parameters, IAM roles, and security policies required to containerize and deploy MitraAI agent nodes.",
+    summary: "For organizations operating under strict data residency directives, cloud hosting requires private VPC subnets. This deployment guide provides the exact network topology parameters, IAM roles, and security policies required to containerize and deploy Aashray AI agent nodes.",
     keyTakeaways: [
-      "MitraAI agent subnets run inside isolated private VPC subnets with no public ingress.",
+      "Aashray AI agent subnets run inside isolated private VPC subnets with no public ingress.",
       "External model API calls are routed through a secure, proxy-monitored NAT gateway.",
       "Transaction logs and ledger states are written to encrypted local PostgreSQL instances."
     ],
     contentHtml: `
       <h2>Private VPC Network Topology</h2>
-      <p>To establish institutional trust, enterprise AI networks must abandon shared cloud hosting in favor of dedicated, isolated Virtual Private Clouds (VPCs). This guide details the architectural steps to host the MitraAI orchestration engine inside your secure AWS/GCP subnets, completely isolating your data from multi-tenant environments.</p>
+      <p>To establish institutional trust, enterprise AI networks must abandon shared cloud hosting in favor of dedicated, isolated Virtual Private Clouds (VPCs). This guide details the architectural steps to host the Aashray AI orchestration engine inside your secure AWS/GCP subnets, completely isolating your data from multi-tenant environments.</p>
 
       <h3>Subnet Architecture Planning</h3>
       <p>The network is split into three security zones:</p>
       <ul>
         <li><strong>Zone A (Public Ingress):</strong> House the rate-limiting TLS load balancer. Public traffic halts here; only validated client tokens can pass payloads to the inner layers.</li>
-        <li><strong>Zone B (Private Compute):</strong> Contains the MitraAI orchestration worker nodes. These nodes run inside private subnets without public IP addresses, preventing external access.</li>
+        <li><strong>Zone B (Private Compute):</strong> Contains the Aashray AI orchestration worker nodes. These nodes run inside private subnets without public IP addresses, preventing external access.</li>
         <li><strong>Zone C (Database & Storage):</strong> Houses the encrypted PostgreSQL schema. This zone is partitioned via strict security group rules, allowing only the compute workers to initiate connections.</li>
       </ul>
       

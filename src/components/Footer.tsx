@@ -9,7 +9,7 @@ export default function Footer() {
     {
       title: "Platform",
       links: [
-        { label: "MitraAI OS", href: "/platforms#mitra-ai-os" },
+        { label: "Aashray AI OS", href: "/platforms#aashray-ai-os" },
         { label: "Workflow Runtime", href: "/infrastructure#workflow-runtime" },
         { label: "Multi-Agent Systems", href: "/platforms#multi-agent-systems" },
         { label: "Operational AI Engine", href: "/platforms#operational-ai-engine" }

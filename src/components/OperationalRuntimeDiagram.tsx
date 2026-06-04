@@ -100,7 +100,7 @@ export default function OperationalRuntimeDiagram() {
         timestamp: timeStr,
         module: "SYSTEM",
         level: "INFO",
-        message: "Initializing Mitra OS orchestration runtime..."
+        message: "Initializing Aashray AI OS orchestration runtime..."
       });
     }
     setLogs(initialLogs);

@@ -26,7 +26,7 @@ export default function ArchitecturePage() {
   const workflows: Record<string, WorkflowData> = {
     insurance: {
       id: "insurance",
-      title: "MitraAI Insurance Claims Routing",
+      title: "Aashray AI Insurance Claims Routing",
       desc: "Autonomously parses claim files, validates against coverage limits, runs parallel fraud metrics, and outputs authorization drafts.",
       targetLatency: "180ms",
       steps: [
@@ -40,7 +40,7 @@ export default function ArchitecturePage() {
     },
     realty: {
       id: "realty",
-      title: "MitraAI Realty Leasing Automation",
+      title: "Aashray AI Realty Leasing Automation",
       desc: "Receives tenant applications, cross-references background credentials, analyzes custom lease terms, and prepares lease agreements.",
       targetLatency: "250ms",
       steps: [
@@ -54,7 +54,7 @@ export default function ArchitecturePage() {
     },
     enterprise: {
       id: "enterprise",
-      title: "MitraAI Corporate Invoice Audit",
+      title: "Aashray AI Corporate Invoice Audit",
       desc: "Scans corporate invoices, compares values against Purchase Orders (POs) in CRM, flags threshold breaches, and queues payments.",
       targetLatency: "150ms",
       steps: [
@@ -227,7 +227,7 @@ export default function ArchitecturePage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
             <div>
               <h3 className="text-xs font-mono text-cyan-500 tracking-widest uppercase mb-3 font-semibold">Active Workflow Mappings</h3>
-              <h2 className="text-3xl font-bold tracking-tight text-white font-mitra">Orchestration DAG Visualizer</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-white font-display">Orchestration DAG Visualizer</h2>
             </div>
             
             {/* Tab Selector */}

@@ -161,7 +161,7 @@ export default function CommandCenterHero() {
                   >
                     <ShieldCheck className="w-4.5 h-4.5 text-cyan-400" />
                   </motion.div>
-                  <span className="text-[8px] font-mono text-cyan-400 font-bold uppercase tracking-wider">MitraAI</span>
+                  <span className="text-[8px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Aashray AI</span>
                 </div>
 
                 {/* Node 5: Egress */}

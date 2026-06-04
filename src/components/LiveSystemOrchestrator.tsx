@@ -179,7 +179,7 @@ export default function LiveSystemOrchestrator() {
             <h4 className="text-white font-bold text-sm">Systems Active & Routing Payloads</h4>
           </div>
           <p className="text-xs text-zinc-400 font-medium leading-relaxed mb-4">
-            MitraAI orchestration processes inbound API transactions statelessly and encrypts outbound telemetry dynamically.
+            Aashray AI orchestration processes inbound API transactions statelessly and encrypts outbound telemetry dynamically.
           </p>
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-black/40 p-3 rounded-xl border border-white/5">

@@ -457,7 +457,7 @@ export default function Home() {
                   <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
                 </div>
                 <span className="text-[11px] font-mono text-zinc-600 font-semibold">
-                  mitra.runtime · workflow-engine
+                  aashray.runtime · workflow-engine
                 </span>
               </div>
               <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 font-semibold">

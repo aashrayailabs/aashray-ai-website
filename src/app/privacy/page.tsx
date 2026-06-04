@@ -37,7 +37,7 @@ export default function PrivacyPage() {
               1. Data Sovereignty &amp; Stateless Processing
             </h2>
             <p className="text-sm text-gray-400 leading-[1.8] font-medium mb-4 text-justify">
-              At Aashray AI Labs, we operate on a secure-by-default architecture. All data payloads passing through the MitraAI ecosystem are processed **state-lessly in-memory**. We do not retain, cache, or permanently store transactional payload texts on our infrastructure after workflow execution has completed. 
+              At Aashray AI Labs, we operate on a secure-by-default architecture. All data payloads passing through the Aashray AI ecosystem are processed **state-lessly in-memory**. We do not retain, cache, or permanently store transactional payload texts on our infrastructure after workflow execution has completed. 
             </p>
             <p className="text-sm text-gray-400 leading-[1.8] font-medium text-justify">
               Most importantly, **your proprietary data is never used to train, fine-tune, or adapt third-party base models**. Token usage is bounded by strict corporate APIs that enforce stateless agreements, ensuring your enterprise knowledge base remains entirely yours.

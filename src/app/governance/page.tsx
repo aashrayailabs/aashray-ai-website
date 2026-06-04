@@ -142,34 +142,34 @@ export default function GovernancePage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-[#faf9f6] text-zinc-700 relative overflow-hidden">
+    <div className="min-h-screen pt-32 pb-24 bg-[#020202] text-gray-150 relative overflow-hidden">
       {/* Ambient background glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-500/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.015] pointer-events-none" />
-
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-950/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.02] pointer-events-none" />
+ 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-6xl">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-200 bg-teal-50/50 mb-6 font-semibold">
-            <UserCheck className="w-3.5 h-3.5 text-teal-700" />
-            <span className="text-[10px] font-mono text-teal-800 tracking-wider uppercase font-semibold">Governance &amp; Oversight</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-6 font-semibold">
+            <UserCheck className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="text-[10px] font-mono text-cyan-400 tracking-wider uppercase font-semibold">Governance &amp; Oversight</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-zinc-900 mb-6 font-display">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 font-display">
             Autonomous Systems <br /> With <span className="text-zinc-500">Deterministic Control</span>
           </h1>
-          <p className="text-lg text-zinc-600 font-medium leading-relaxed">
-            MitraAI operates within strict organizational boundaries. By wrapping autonomous AI models in code-enforced rules engines, we guarantee predictable compliance and rollback safety.
+          <p className="text-lg text-zinc-400 font-medium leading-relaxed">
+            Aashray AI operates within strict organizational boundaries. By wrapping autonomous AI models in code-enforced rules engines, we guarantee predictable compliance and rollback safety.
           </p>
         </div>
-
+ 
         {/* Audit Sandbox Section */}
         <section className="mb-24">
           <div className="text-center md:text-left mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 mb-3 font-display">Operational Audit Sandbox</h2>
-            <p className="text-sm text-zinc-500 font-semibold max-w-xl leading-relaxed">Run simulated enterprise operations to observe how policy boundaries trigger human-in-the-loop checks and log audits.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-white mb-3 font-display">Operational Audit Sandbox</h2>
+            <p className="text-sm text-zinc-400 font-semibold max-w-xl leading-relaxed">Run simulated enterprise operations to observe how policy boundaries trigger human-in-the-loop checks and log audits.</p>
           </div>
-
+ 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* LEFT Panel: Selector (5 cols) - Styled elegantly in light/dark blend container */}
@@ -184,32 +184,32 @@ export default function GovernancePage() {
                       isSimulating && !isActive ? "opacity-40 pointer-events-none" : ""
                     } ${
                       isActive 
-                        ? "border-teal-500 bg-teal-50/50 shadow-[0_4px_16px_rgba(24,24,27,0.04)]" 
-                        : "border-zinc-200 bg-white hover:border-zinc-300 shadow-sm"
+                        ? "border-cyan-500/30 bg-[#0c0d10] shadow-[0_0_15px_rgba(6,182,212,0.05)]" 
+                        : "border-white/5 bg-[#050505] hover:border-white/10 shadow-lg"
                     }`}
                   >
                     <div className="flex justify-between items-start gap-4 mb-3">
                       <div>
-                        <span className="text-[10px] font-mono text-zinc-400 font-bold tracking-wider uppercase">{tx.id}</span>
-                        <h4 className="text-sm font-bold text-zinc-800 mt-0.5">{tx.type}</h4>
+                        <span className="text-[10px] font-mono text-zinc-500 font-bold tracking-wider uppercase">{tx.id}</span>
+                        <h4 className="text-sm font-bold text-white mt-0.5">{tx.type}</h4>
                       </div>
                       {tx.amount !== "N/A" && (
-                        <span className="text-xs font-mono font-bold text-teal-700">{tx.amount}</span>
+                        <span className="text-xs font-mono font-bold text-cyan-400">{tx.amount}</span>
                       )}
                     </div>
-                    <p className="text-xs text-zinc-500 leading-relaxed font-semibold mb-4">{tx.description}</p>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-semibold mb-4">{tx.description}</p>
                     
-                    <div className="flex justify-between items-center pt-3 border-t border-zinc-100">
-                      <span className="text-[9px] text-zinc-400 font-mono italic">Click to audit SOP</span>
-                      <div className="flex items-center gap-1.5 text-xs font-semibold text-zinc-800">
-                        {isActive && activeTx.status === "completed" && <span className="text-emerald-600 text-[10px] font-bold">VERIFIED</span>}
-                        {isActive && activeTx.status === "rejected" && <span className="text-rose-600 text-[10px] font-bold">HALTED</span>}
-                        {isActive && activeTx.status === "hitl" && <span className="text-teal-700 text-[10px] animate-pulse font-bold">PENDING AUTH</span>}
+                    <div className="flex justify-between items-center pt-3 border-t border-white/10">
+                      <span className="text-[9px] text-zinc-500 font-mono italic">Click to audit SOP</span>
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
+                        {isActive && activeTx.status === "completed" && <span className="text-emerald-400 text-[10px] font-bold">VERIFIED</span>}
+                        {isActive && activeTx.status === "rejected" && <span className="text-red-400 text-[10px] font-bold">HALTED</span>}
+                        {isActive && activeTx.status === "hitl" && <span className="text-cyan-400 text-[10px] animate-pulse font-bold">PENDING AUTH</span>}
                         {isActive && activeTx.status === "running" && <span className="text-zinc-500 text-[10px]">RUNNING</span>}
                         {(!isActive || activeTx.status === "idle") && (
                           <>
-                            <Play className="w-3 h-3 text-teal-750" />
-                            <span className="text-teal-750 text-[10px] uppercase font-mono font-bold tracking-wider">Run Audit</span>
+                            <Play className="w-3 h-3 text-cyan-400" />
+                            <span className="text-cyan-400 text-[10px] uppercase font-mono font-bold tracking-wider">Run Audit</span>
                           </>
                         )}
                       </div>
@@ -218,13 +218,13 @@ export default function GovernancePage() {
                 );
               })}
             </div>
-
+ 
             {/* RIGHT Panel: Live Console & Outputs (7 cols) - Dark console contrast */}
             <div className="lg:col-span-7 flex flex-col rounded-3xl border border-white/5 bg-[#0c0d0f] overflow-hidden min-h-[450px]">
               {/* Console Header */}
               <div className="px-6 py-4 bg-[#111215] border-b border-white/5 flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-cyan-500" />
+                  <Terminal className="w-4 h-4 text-cyan-505" />
                   <span className="text-xs font-mono font-bold text-white">Compliance Terminal Log</span>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -232,7 +232,7 @@ export default function GovernancePage() {
                   <span className="text-[9px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Operational Mode</span>
                 </div>
               </div>
-
+ 
               {/* Console Output Area */}
               <div 
                 ref={logContainerRef}
@@ -250,7 +250,7 @@ export default function GovernancePage() {
                     if (isFlagged) textColor = "text-cyan-400 font-semibold";
                     if (isCompleted) textColor = "text-emerald-400 font-bold";
                     if (isHalted) textColor = "text-red-400 font-bold";
-
+ 
                     return (
                       <div key={index} className={`leading-relaxed border-l-2 border-white/5 pl-2 ${textColor}`}>
                         {log}
@@ -264,7 +264,7 @@ export default function GovernancePage() {
                     <span>to trigger the compliance verification trace.</span>
                   </div>
                 )}
-
+ 
                 {/* HITL Intervention Modal inside Console */}
                 <AnimatePresence>
                   {hitlStage && activeTx && (
@@ -286,11 +286,11 @@ export default function GovernancePage() {
                           </p>
                         </div>
                       </div>
-
+ 
                       <div className="p-3 rounded bg-black/60 border border-white/5 font-mono text-[10px] text-zinc-500 mb-4">
                         {activeTx.details}
                       </div>
-
+ 
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleHitlAction(true)}
@@ -309,7 +309,7 @@ export default function GovernancePage() {
                   )}
                 </AnimatePresence>
               </div>
-
+ 
               {/* Checkpoint Pipeline visual (Footer of console) */}
               <div className="px-6 py-4 bg-[#111215] border-t border-white/5 flex justify-between items-center gap-2">
                 {[
@@ -327,78 +327,77 @@ export default function GovernancePage() {
                         {item.step}
                       </div>
                       <span className={`text-[9px] font-semibold uppercase tracking-wider hidden sm:inline ${
-                        isActive ? "text-white" : "text-gray-650"
+                        isActive ? "text-white" : "text-gray-655"
                       }`}>{item.name}</span>
                     </div>
                   );
                 })}
               </div>
-
+ 
             </div>
-
+ 
           </div>
         </section>
-
+ 
         {/* Core Pillars of Control */}
         <section className="mb-20">
-          <h3 className="text-xs font-mono text-teal-700 tracking-widest uppercase mb-4 font-semibold">Governance Foundations</h3>
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 mb-12">The Governance Control Layer</h2>
-
+          <h3 className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-4 font-semibold">Governance Foundations</h3>
+          <h2 className="text-3xl font-bold tracking-tight text-white mb-12">The Governance Control Layer</h2>
+ 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-white border border-zinc-200 shadow-sm hover:shadow-md transition-all">
-              <div className="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center mb-6">
-                <ShieldCheck className="w-5 h-5 text-teal-700" />
+            <div className="p-8 rounded-3xl bg-[#050505] border border-white/5 shadow-lg hover:border-cyan-500/20 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-cyan-950/20 border border-cyan-500/20 flex items-center justify-center mb-6">
+                <ShieldCheck className="w-5 h-5 text-cyan-400" />
               </div>
-              <h4 className="text-lg font-bold text-zinc-800 mb-3 tracking-tight">Structured Rules Engines</h4>
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed font-semibold">
+              <h4 className="text-lg font-bold text-white mb-3 tracking-tight">Structured Rules Engines</h4>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-semibold">
                 We encapsulate probabilistic model parameters inside custom, static rules logic. AI execution can never select its own states; it is routed along deterministic tracks defined in secure source code.
               </p>
             </div>
-
-            <div className="p-8 rounded-3xl bg-white border border-zinc-200 shadow-sm hover:shadow-md transition-all">
-              <div className="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center mb-6">
-                <UserCheck className="w-5 h-5 text-teal-700" />
+ 
+            <div className="p-8 rounded-3xl bg-[#050505] border border-white/5 shadow-lg hover:border-cyan-500/20 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-cyan-950/20 border border-cyan-500/20 flex items-center justify-center mb-6">
+                <UserCheck className="w-5 h-5 text-cyan-400" />
               </div>
-              <h4 className="text-lg font-bold text-zinc-800 mb-3 tracking-tight">Human-in-the-Loop Gates</h4>
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed font-semibold">
+              <h4 className="text-lg font-bold text-white mb-3 tracking-tight">Human-in-the-Loop Gates</h4>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-semibold">
                 When thresholds, compliance criteria, or custom edge cases diverge from pre-approved SOP parameters, the execution pipeline halts automatically, locks the state machine, and awaits human verification.
               </p>
             </div>
-
-            <div className="p-8 rounded-3xl bg-white border border-zinc-200 shadow-sm hover:shadow-md transition-all">
-              <div className="w-10 h-10 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center mb-6">
-                <Eye className="w-5 h-5 text-teal-700" />
+ 
+            <div className="p-8 rounded-3xl bg-[#050505] border border-white/5 shadow-lg hover:border-cyan-500/20 transition-all">
+              <div className="w-10 h-10 rounded-lg bg-cyan-950/20 border border-cyan-500/20 flex items-center justify-center mb-6">
+                <Eye className="w-5 h-5 text-cyan-400" />
               </div>
-              <h4 className="text-lg font-bold text-zinc-800 mb-3 tracking-tight">Explainability &amp; Auditing</h4>
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed font-semibold">
+              <h4 className="text-lg font-bold text-white mb-3 tracking-tight">Explainability &amp; Auditing</h4>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-semibold">
                 No black boxes. Every classification decision and model choice is coupled with structured prompt memory metadata, allowing system administrators to review decision rationales instantly during standard reviews.
               </p>
             </div>
           </div>
         </section>
-
+ 
         {/* CTA */}
-        <section className="text-center py-16 border-t border-zinc-200">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-4 font-display">Design Safe Operational AI</h2>
-          <p className="text-sm text-zinc-500 font-medium max-w-md mx-auto mb-8 leading-relaxed">
+        <section className="text-center py-16 border-t border-white/10">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-4 font-display">Design Safe Operational AI</h2>
+          <p className="text-sm text-zinc-400 font-medium max-w-md mx-auto mb-8 leading-relaxed">
             Consult our architects on embedding custom corporate governance guidelines, local audit databases, and custom API validation checkpoints.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
               href="/contact" 
-              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider bg-zinc-900 text-white hover:bg-zinc-800 transition-colors rounded-full text-center shadow-md cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition-colors rounded-full text-center shadow-md cursor-pointer"
             >
               Consult an Architect
             </Link>
             <Link 
               href="/security" 
-              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider border border-zinc-200 hover:border-zinc-350 bg-white text-zinc-700 transition-colors rounded-full text-center"
+              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider border border-white/10 hover:border-white/20 bg-transparent text-zinc-300 transition-colors rounded-full text-center"
             >
               Read Security Details
             </Link>
           </div>
         </section>
-
       </div>
     </div>
   );

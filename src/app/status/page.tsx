@@ -91,7 +91,7 @@ export default function StatusPage() {
 
   const services: Service[] = [
     {
-      name: "MitraAI Model Routing Gateway",
+      name: "Aashray AI Model Routing Gateway",
       uptime: "99.98%",
       status: "operational",
       icon: Zap,

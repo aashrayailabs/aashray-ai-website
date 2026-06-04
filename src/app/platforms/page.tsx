@@ -32,7 +32,7 @@ export default function PlatformsPage() {
   const platforms: Record<string, PlatformDetail> = {
     insurance: {
       id: "insurance",
-      name: "MitraAI Insurance",
+      name: "Aashray AI Insurance",
       sector: "Claims & Underwriting",
       desc: "Orchestrates claims ingestion, parallel coverage validation, fraud scanning, and drafts adjustment letters.",
       advisorTask: "Review Auto-Suspended Claim #CLM-891 (Potential deductible discrepancy)",
@@ -52,7 +52,7 @@ export default function PlatformsPage() {
     },
     realty: {
       id: "realty",
-      name: "MitraAI Realty",
+      name: "Aashray AI Realty",
       sector: "Property Tech & Tenant Ops",
       desc: "Pre-qualifies tenant applications, cross-checks financials, scans contracts for custom clauses, and queues drafts.",
       advisorTask: "Verify Background Report verification mismatch for applicant U-302",
@@ -72,7 +72,7 @@ export default function PlatformsPage() {
     },
     healthcare: {
       id: "healthcare",
-      name: "MitraAI Healthcare",
+      name: "Aashray AI Healthcare",
       sector: "Clinical Operations & Routing",
       desc: "Normalizes patient charts, cross-references diagnostic metadata, and automates administrative scheduling.",
       advisorTask: "Approve Patient Referral routing adjustment (Department override flag)",
@@ -92,7 +92,7 @@ export default function PlatformsPage() {
     },
     enterprise: {
       id: "enterprise",
-      name: "MitraAI Enterprise",
+      name: "Aashray AI Enterprise",
       sector: "Corporate Automation Ops",
       desc: "Coordinates multi-system integrations, normalizes vendor invoices, and automates bookkeeping reconciliation.",
       advisorTask: "Review Suspended Invoice #INV-402 (Amount $12,500 exceeds auto-payment limits)",
@@ -120,24 +120,24 @@ export default function PlatformsPage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-24 bg-[#faf9f6] text-zinc-700 relative overflow-hidden font-sans">
+    <div className="min-h-screen pt-32 pb-24 bg-[#020202] text-gray-150 relative overflow-hidden font-sans">
       {/* Background Ambience */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-500/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.015] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-950/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-center opacity-[0.02] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-6xl">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-200 bg-teal-50/50 mb-6 font-semibold">
-            <Layers className="w-3.5 h-3.5 text-teal-700" />
-            <span className="text-[10px] font-mono text-teal-800 tracking-wider uppercase">Product Ecosystem</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-6 font-semibold">
+            <Layers className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="text-[10px] font-mono text-cyan-400 tracking-wider uppercase">Product Ecosystem</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-zinc-900 mb-6">
-            Ecosystem Platforms <br /> &amp; <span className="text-zinc-500">Workspace Previews</span>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6 font-display">
+            Ecosystem Platforms <br /> &amp; <span className="text-gray-500">Workspace Previews</span>
           </h1>
-          <p className="text-base sm:text-lg text-zinc-650 leading-relaxed font-medium">
-            Explore MitraAI's specialized operational platforms. Select a platform to preview its active workspace consoles, timelines, and decision grids.
+          <p className="text-base sm:text-lg text-zinc-400 leading-relaxed font-medium">
+            Explore Aashray AI's specialized operational platforms. Select a platform to preview its active workspace consoles, timelines, and decision grids.
           </p>
         </div>
 
@@ -151,12 +151,12 @@ export default function PlatformsPage() {
                 onClick={() => { setActivePlatform(plat.id); setHitlActionDone(null); }}
                 className={`px-6 py-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all duration-300 min-w-[200px] cursor-pointer ${
                   isActive 
-                    ? "bg-white border-zinc-300 shadow-[0_4px_20px_rgba(24,24,27,0.05)]" 
-                    : "bg-zinc-50 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-100"
+                    ? "bg-[#050505] border-white/10 shadow-[0_0_20px_rgba(6,182,212,0.08)]" 
+                    : "bg-[#080808]/50 border-white/5 hover:border-white/10 hover:bg-white/[0.01]"
                 }`}
               >
-                <span className="text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider">{plat.sector}</span>
-                <span className={`text-sm font-bold mt-1 ${isActive ? "text-teal-700" : "text-zinc-800"}`}>{plat.name}</span>
+                <span className="text-[9px] font-mono text-zinc-500 font-bold uppercase tracking-wider">{plat.sector}</span>
+                <span className={`text-sm font-bold mt-1 ${isActive ? "text-cyan-400" : "text-zinc-300"}`}>{plat.name}</span>
               </button>
             );
           })}
@@ -168,7 +168,7 @@ export default function PlatformsPage() {
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8 border-b border-white/5 pb-6">
             <div>
-              <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold">MitraAI OS Workspace Preview</span>
+              <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold">Aashray AI OS Workspace Preview</span>
               <h2 className="text-2xl font-bold text-white tracking-tight mt-1">{platforms[activePlatform].name} Console</h2>
               <p className="text-xs text-zinc-400 font-medium mt-1">{platforms[activePlatform].desc}</p>
             </div>
@@ -254,7 +254,7 @@ export default function PlatformsPage() {
                     <Terminal className="w-4 h-4 text-cyan-500" />
                     <h3 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Operations Console</h3>
                   </div>
-                  <span className="text-[8px] font-mono text-zinc-500">Live logs</span>
+                  <span className="text-[8px] font-mono text-zinc-555">Live logs</span>
                 </div>
 
                 <div className="font-mono text-[9px] text-zinc-400 space-y-2 h-36 overflow-y-auto mb-4 bg-black/50 p-3 rounded-lg border border-white/[0.02]">
@@ -288,21 +288,21 @@ export default function PlatformsPage() {
         </div>
 
         {/* Global callout for platforms */}
-        <section className="text-center py-16 border-t border-zinc-200">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900 mb-4 font-display">Initialize Platform Onboarding</h2>
-          <p className="text-sm text-zinc-500 font-medium max-w-md mx-auto mb-8 leading-relaxed">
+        <section className="text-center py-16 border-t border-white/10">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-4 font-display">Initialize Platform Onboarding</h2>
+          <p className="text-sm text-zinc-400 font-medium max-w-md mx-auto mb-8 leading-relaxed">
             Consult our product engineering team to set up a private sandbox preview tailored for your business operational bottlenecks.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
               href="/contact" 
-              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider bg-zinc-900 text-white hover:bg-zinc-800 transition-colors rounded-full text-center shadow-md"
+              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition-colors rounded-full text-center shadow-md"
             >
               Consult Product Engineering
             </Link>
             <Link 
               href="/infrastructure" 
-              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider border border-zinc-200 hover:border-zinc-350 bg-white text-zinc-700 transition-colors rounded-full text-center"
+              className="w-full sm:w-auto px-6 py-3 text-xs font-bold uppercase tracking-wider border border-white/10 hover:border-white/20 bg-transparent text-zinc-350 transition-colors rounded-full text-center"
             >
               Read Infrastructure Specifications
             </Link>

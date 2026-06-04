@@ -54,7 +54,7 @@ export default function Navbar() {
     platform: {
       label: "Platform",
       items: [
-        { title: "MitraAI OS", desc: "Enterprise orchestration runtime for governed AI operations.", href: "/platforms#mitra-ai-os", icon: Layers },
+        { title: "Aashray AI OS", desc: "Enterprise orchestration runtime for governed AI operations.", href: "/platforms#aashray-ai-os", icon: Layers },
         { title: "Workflow Runtime", desc: "Stateful backpressure-aware execution engine.", href: "/infrastructure#workflow-runtime", icon: Cpu },
         { title: "Multi-Agent Systems", desc: "Cooperative, specialized agent topologies.", href: "/platforms#multi-agent-systems", icon: Users },
         { title: "Operational AI Engine", desc: "Model-agnostic backend inference and routing.", href: "/platforms#operational-ai-engine", icon: Zap }

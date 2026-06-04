@@ -20,7 +20,7 @@ interface NodeData {
 }
 
 export default function DashboardPage() {
-  const [selectedWorkspace, setSelectedWorkspace] = useState("mitra-insurance-prod");
+  const [selectedWorkspace, setSelectedWorkspace] = useState("aashray-insurance-prod");
   const [operationsCount, setOperationsCount] = useState(14820);
   const [activeStep, setActiveStep] = useState<number | null>(null);
   const [selectedNode, setSelectedNode] = useState<string>("router");
@@ -225,7 +225,7 @@ export default function DashboardPage() {
               </span>
               <span className="text-[10px] text-cyan-400 font-mono tracking-widest uppercase font-semibold">Command Center Interface</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">MitraAI Ecosystem Controller</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">Aashray AI Ecosystem Controller</h1>
           </div>
 
           <div className="flex flex-wrap gap-4 items-center w-full lg:w-auto">
@@ -236,10 +236,10 @@ export default function DashboardPage() {
                 onChange={(e) => setSelectedWorkspace(e.target.value)}
                 className="bg-[#050505] border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white font-medium focus:outline-none focus:border-cyan-500/30 cursor-pointer appearance-none pr-10"
               >
-                <option value="mitra-insurance-prod">MitraAI Insurance (Production)</option>
-                <option value="mitra-realty-prod">MitraAI Realty (Production)</option>
-                <option value="mitra-health-sandbox">MitraAI Healthcare (Sandbox)</option>
-                <option value="mitra-enterprise-staging">MitraAI Enterprise (Staging)</option>
+                <option value="aashray-insurance-prod">Aashray AI Insurance (Production)</option>
+                <option value="aashray-realty-prod">Aashray AI Realty (Production)</option>
+                <option value="aashray-health-sandbox">Aashray AI Healthcare (Sandbox)</option>
+                <option value="aashray-enterprise-staging">Aashray AI Enterprise (Staging)</option>
               </select>
               <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-500">
                 <Layers className="w-3.5 h-3.5" />

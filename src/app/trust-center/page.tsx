@@ -122,7 +122,7 @@ export default function TrustCenterPage() {
                 <h4 className="text-lg font-bold text-white tracking-tight">Human Oversight Philosophy</h4>
               </div>
               <p className="text-xs sm:text-sm text-gray-400 leading-[1.8] font-medium text-justify">
-                We believe that true operational safety lies in collaborative oversight. The MitraAI orchestration engine is built to handle cognitive classification and high-speed data routing, but critical action execution nodes (e.g., executing fund transfers, updating regulatory records, finalized leasing contracts) **always require a manual signature**. When transaction thresholds are breached, the workflow suspends, and is routed to a human operator queue.
+                We believe that true operational safety lies in collaborative oversight. The Aashray AI orchestration engine is built to handle cognitive classification and high-speed data routing, but critical action execution nodes (e.g., executing fund transfers, updating regulatory records, finalized leasing contracts) **always require a manual signature**. When transaction thresholds are breached, the workflow suspends, and is routed to a human operator queue.
               </p>
             </div>
 
@@ -161,7 +161,7 @@ export default function TrustCenterPage() {
                 <h4 className="text-lg font-bold text-white tracking-tight">Deployment &amp; Model Transparency</h4>
               </div>
               <p className="text-xs sm:text-sm text-gray-400 leading-[1.8] font-medium text-justify">
-                Our system is model-agnostic. We provide deployment blueprints enabling the MitraAI engine to host within your own AWS/GCP private subnets. This guarantees that your data stays inside your corporate network boundaries. Our agnostic architecture lets you hot-swap model endpoints in real-time, preventing platform lock-in and vendor dependencies.
+                Our system is model-agnostic. We provide deployment blueprints enabling the Aashray AI engine to host within your own AWS/GCP private subnets. This guarantees that your data stays inside your corporate network boundaries. Our agnostic architecture lets you hot-swap model endpoints in real-time, preventing platform lock-in and vendor dependencies.
               </p>
             </div>
 
